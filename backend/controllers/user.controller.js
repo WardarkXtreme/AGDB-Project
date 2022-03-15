@@ -72,7 +72,7 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
 
     let sql = `SELECT * FROM users WHERE email = ?`;
-    connectDb.query(sql, [req.body.email], function(err, data) {
+    dbConnect.query(sql, [req.body.email], function(err, data) {
         if (err) {
             return res.status(400).json({err}); 
         } 
