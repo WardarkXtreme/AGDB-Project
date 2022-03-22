@@ -1,4 +1,6 @@
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
+const path = require('path');
+const hbs = require('nodemailer-express-handlebars');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -14,13 +16,7 @@ function generateString(length) {
         result += rdmc.charAt(Math.floor(Math.random() * rdmcLength));
     }
     return result;
-}
-
-let date;
-date = new Date();
-let jma = date.toLocaleDateString().replace(/[/]/g, "-");
-let hms = date.toLocaleTimeString()
-date = (jma + " " + "à" + " " + hms);
+};
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -30,16 +26,32 @@ let transporter = nodemailer.createTransport({
     }
 });
 
+const handlebarsOption = {
+    viewEngine: {
+        extName: ".handlebars",
+        partialSdir: path.resolve('./views'),
+        defaultLayout: false,
+    },
+    viewPath: path.resolve('./views'),
+    extName: ".handlebars",
+}
+
+transporter.use('compile', hbs(handlebarsOption));
 
 exports.signup = (req, res) => {
 
     const stkmdp = generateString(15);
 
     const mailOptions = {
-        from: process.env.EMAIL, // sender address
-        to: req.body.email, // list of receivers
-        subject: 'test mail', // Subject line
-        html: '<h1>this is a test mail.</h1>' + stkmdp
+        from: process.env.EMAIL,
+        to: req.body.email,
+        subject: 'AuGiteDuBois(NoReply)',
+        template: 'email',
+        context: {
+            email: req.body.email,
+            pass: stkmdp
+        }
+       
     };
 
     transporter.sendMail(mailOptions, function (err, info) {

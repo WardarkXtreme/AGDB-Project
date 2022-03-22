@@ -1,6 +1,7 @@
 const express = require('express');
 require('./connect/Connect_db.js');
 const userRoutes = require('./routes/users.routes');
+const avisRoutes = require('./routes/avis.routes');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -14,5 +15,6 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use("/api/auth", userRoutes);
+app.use("/api/avis", avisRoutes);
 
 module.exports = app;
