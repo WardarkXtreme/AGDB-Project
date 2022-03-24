@@ -51,7 +51,7 @@ exports.signup = (req, res) => {
             email: req.body.email,
             pass: stkmdp
         }
-       
+        
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
