@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@600&family=Open+Sans:ital@1&family=Rubik:wght@300;400&display=swap');
+@import "~video-react/styles/scss/video-react";
+
+.titleGroupe{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+    .icoStars{
+        color: #BC8212;
+        margin-bottom: 40px;
+        padding: 2px;
+    }
+    .titleName{
+        color: #87BA47;
+        font-family: 'Martel', 'Rubik', serif;
+    }
+}
+.textPresentation {
+    color: white;
+    text-align: center;
+    font-size: 3.2vw;
+    .tp {
+        margin: 0;
+        line-height: 20px;
+        font-family: 'Open Sans', sans-serif;
+    }
+}
+.moviePresentation{
+    display: flex;
+    margin-top: 50px;
+    .video-react {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
