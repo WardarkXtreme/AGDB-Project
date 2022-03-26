@@ -3,7 +3,7 @@ import pic1 from './assets/slide_1.jpg';
 import pic2 from './assets/slide_2.jpg';
 import pic3 from './assets/slide_3.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -16,7 +16,6 @@ function Gite() {
         setCache(!cache)
     }
 
-    console.log(img)
     const tableGite = [
         pic1,
         pic2,
@@ -118,7 +117,11 @@ function Gite() {
                                 <li>Ces équipements sont à votre disposition pour votre séjour </li>
                             </ul>
                         </div>
-                        <button className='btnInfo' onClick={toggleCache}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
+                        {!cache ? 
+                            <button className='btnInfo' onClick={toggleCache}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
+                            :
+                            <button className='btnInfo' onClick={toggleCache}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU'/></button>
+                        }
                     </div>
                 </div>
             </div>

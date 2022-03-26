@@ -48,12 +48,16 @@
 }
 
 .informationGite {
+    overflow: hidden;
     .btnInfo{
         color: white;
         border: none;
         background-color: transparent;
+        margin-top: 10px;
     }
 }
 .displayInfo{
     display: inherit;
+    overflow: hidden;
+    animation: info 500ms linear forwards;
 }
