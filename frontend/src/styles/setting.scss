@@ -1,6 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+
+.displayNone {
+    display: none;
+}
+
 body{
     margin: 0;
     padding: 0;
-    background: linear-gradient(180deg, #141414 86.98%, rgba(51, 51, 51, 0.3) 100%);
+    background: linear-gradient(180deg, #141414 100%, rgba(51, 51, 51, 0.3) 100%);
     background-repeat: no-repeat;
 }
+h2 {
+    font-size: 2.5em;
+    font-family: 'Tangerine', cursive;
+    color: #BC8212;
+}
+h3 {
+    color: #BC8212;
+    font-family: 'Tangerine', cursive;
+    font-size: 1.8em;
+    padding-left: 6px;
+}
+ul{
+    margin: 0;
+    padding: 0 6px;
+}
+li {
+    color: white;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+li::before { content: "* "; color: #BC8212}
