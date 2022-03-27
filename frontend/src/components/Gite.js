@@ -83,7 +83,7 @@ function Gite() {
                 <div className='img'>
                     <img src={tableGite[img]} alt="photo-gite" className="picGite"/>
                     <div className='btnBar'>
-                        <button id='btn_left' onClick={() => {
+                        <button className='btn_left' onClick={() => {
                             if (img > 0){
                                 setImg(img - 1)
                             }
@@ -95,7 +95,7 @@ function Gite() {
                             <div id='ballTwo' className='ball'></div>
                             <div id='ballTree' className='ball'></div>
                         </div>
-                        <button id='btn_right' onClick={() => {
+                        <button className='btn_right' onClick={() => {
                             if (img < 2){
                                 setImg(img + 1)
                             }
