@@ -5,6 +5,10 @@ import pic6 from './assets/slide_6.jpg';
 import pic7 from './assets/slide_7.jpg';
 import pic8 from './assets/slide_8.jpg';
 import pic9 from './assets/slide_9.jpg';
+import pic10 from './assets/slide_10.jpg';
+import pic11 from './assets/slide_11.jpg';
+import pic12 from './assets/slide_12.jpg';
+import pic13 from './assets/slide_13.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 
@@ -50,12 +54,12 @@ function Chambre() {
         pic9
     ]
     const tableM = [
-        pic4,
-        pic5
+        pic10,
+        pic11
     ]
     const tableD = [
-        pic4,
-        pic5
+        pic12,
+        pic13
     ]
     useEffect(() => {
 
@@ -65,6 +69,10 @@ function Chambre() {
         const ballSeven = document.getElementById('ballSeven');
         const ballHeight = document.getElementById('ballHeight');
         const ballNine = document.getElementById('ballNine');
+        const ballTen = document.getElementById('ballTen');
+        const ballEleven = document.getElementById('ballEleven');
+        const ballTwelve = document.getElementById('ballTwelve');
+        const ballThirteen = document.getElementById('ballThirteen');
         
         if (imgPMR === 0) {
             ballFour.style.background = '#BC8212';
@@ -125,6 +133,46 @@ function Chambre() {
             ballNine.style.height = '13px';
             ballNine.style.width = '13px';
             ballNine.style.border = 'white 1px solid';
+        };
+        if (imgM === 0) {
+            ballTen.style.background = '#BC8212';
+            ballTen.style.height = '13px';
+            ballTen.style.width = '13px';
+            ballTen.style.border = 'white 1px solid';
+            ballEleven.style.background = 'white';
+            ballEleven.style.height = '10px';
+            ballEleven.style.width = '10px';
+            ballEleven.style.border = 'none';
+        };
+        if (imgM === 1) {
+            ballTen.style.background = 'white';
+            ballTen.style.height = '10px';
+            ballTen.style.width = '10px';
+            ballTen.style.border = 'none';
+            ballEleven.style.background = '#BC8212';
+            ballEleven.style.height = '13px';
+            ballEleven.style.width = '13px';
+            ballEleven.style.border = 'white 1px solid';
+        };
+        if (imgD === 0) {
+            ballTwelve.style.background = '#BC8212';
+            ballTwelve.style.height = '13px';
+            ballTwelve.style.width = '13px';
+            ballTwelve.style.border = 'white 1px solid';
+            ballThirteen.style.background = 'white';
+            ballThirteen.style.height = '10px';
+            ballThirteen.style.width = '10px';
+            ballThirteen.style.border = 'none';
+        };
+        if (imgD === 1) {
+            ballTwelve.style.background = 'white';
+            ballTwelve.style.height = '10px';
+            ballTwelve.style.width = '10px';
+            ballTwelve.style.border = 'none';
+            ballThirteen.style.background = '#BC8212';
+            ballThirteen.style.height = '13px';
+            ballThirteen.style.width = '13px';
+            ballThirteen.style.border = 'white 1px solid';
         };
         
     }, [imgPMR, imgSP, imgRP, imgM, imgD])
@@ -256,6 +304,88 @@ function Chambre() {
                             <button className='btnInfo' onClick={toggleCacheRP}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
                             :
                             <button className='btnInfo' onClick={toggleCacheRP}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU'/></button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className='goupeGite'>
+                <h2 className='subtitle'>Chambre Moka</h2>
+                <div className='img'>
+                    <img src={tableM[imgM]} alt="photo-gite" className="picGite"/>
+                    <div className='btnBar'>
+                        <button className='btn_left' onClick={() => {
+                            if (imgM > 0){
+                                setImgM(imgM - 1)
+                            }
+                        }}>
+                            <FontAwesomeIcon icon={faAngleLeft} className='icoArrowLR'/>
+                        </button>
+                        <div className='groupBall'>
+                            <div id='ballTen' className='ball'></div>
+                            <div id='ballEleven' className='ball'></div>
+                        </div>
+                        <button className='btn_right' onClick={() => {
+                            if (imgM < 1){
+                                setImgM(imgM + 1)
+                            }
+                        }}>
+                            <FontAwesomeIcon icon={faAngleRight} className='icoArrowLR'/>
+                        </button>
+                    </div>
+                    <div className='informationGite'>
+                        <div className={`displayNone ${cacheM ? "displayInfo" : "displayNone"}`}>
+                            <h3>Située au premier étage :</h3>
+                            <ul>
+                                <li>Un lit double</li>
+                                <li>Équipements: chauffage indépendant, penderie</li>
+                                <li>Commun à l’étage : accès salle de bain avec douche,
+                                    toilettes et Sauna 4 personnes</li>
+                            </ul>                            
+                        </div>
+                        {!cacheM ? 
+                            <button className='btnInfo' onClick={toggleCacheM}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
+                            :
+                            <button className='btnInfo' onClick={toggleCacheM}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU'/></button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className='goupeGite'>
+                <h2 className='subtitle'>Dortoir</h2>
+                <div className='img'>
+                    <img src={tableD[imgD]} alt="photo-gite" className="picGite"/>
+                    <div className='btnBar'>
+                        <button className='btn_left' onClick={() => {
+                            if (imgD > 0){
+                                setImgD(imgD - 1)
+                            }
+                        }}>
+                            <FontAwesomeIcon icon={faAngleLeft} className='icoArrowLR'/>
+                        </button>
+                        <div className='groupBall'>
+                            <div id='ballTwelve' className='ball'></div>
+                            <div id='ballThirteen' className='ball'></div>
+                        </div>
+                        <button className='btn_right' onClick={() => {
+                            if (imgD < 1){
+                                setImgD(imgD + 1)
+                            }
+                        }}>
+                            <FontAwesomeIcon icon={faAngleRight} className='icoArrowLR'/>
+                        </button>
+                    </div>
+                    <div className='informationGite'>
+                        <div className={`displayNone ${cacheD ? "displayInfo" : "displayNone"}`}>
+                            <h3>Située au deuxième étage</h3>
+                            <ul>
+                                <li>Quatre lits individuels, et un canapé convertible (2 places)</li>
+                                <li>Équipements: chauffage indépendant, penderie, toilettes</li>
+                            </ul>                            
+                        </div>
+                        {!cacheD ? 
+                            <button className='btnInfo' onClick={toggleCacheD}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
+                            :
+                            <button className='btnInfo' onClick={toggleCacheD}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU'/></button>
                         }
                     </div>
                 </div>
