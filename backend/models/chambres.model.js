@@ -1,6 +1,6 @@
-
 const chambres = [
     {
+        "id": "0",
         "title": "Chambre PMR",
         "headtext": ["Accessible aux personnes à mobilités réduites !", "Optimisé pour garantir accessibilité, autonomie maximale, confort et sécurité !"],
         "imageUrl": {
@@ -12,6 +12,7 @@ const chambres = [
         "li": ["Un lit double", "Salle de bain avec douche, et toilettes", "Équipements en chambre : chauffage indépendant, penderie, bureau"]
     },
     {
+        "id": "1",
         "title": "Suite Parentale",
         "headtext": [""],
         "imageUrl": {
@@ -23,6 +24,7 @@ const chambres = [
         "li": ["Un lit double", "Salle de bain avec douche, baignoire, toilettes", "Équipements en suite : chauffage indépendant, penderie"]
     },
     {
+        "id": "2",
         "title": "Chambre Rose Poudrée",
         "headtext": [""],
         "imageUrl": {
@@ -34,6 +36,7 @@ const chambres = [
         "li": ["Un lit double", "Équipements en suite : chauffage indépendant, penderie", "Commun à l’étage : accès salle de bain avec douche, toilettes et Sauna 4 personnes"]
     },
     {
+        "id": "3",
         "title": "Chambre Moka",
         "headtext": [""],
         "imageUrl": {
@@ -45,6 +48,7 @@ const chambres = [
         "li": ["Un lit double", "Équipements en suite : chauffage indépendant, penderie", "Commun à l’étage : accès salle de bain avec douche, toilettes et Sauna 4 personnes"]
     },
     {
+        "id": "4",
         "title": "Dortoir",
         "headtext": [""],
         "imageUrl": {
@@ -53,7 +57,7 @@ const chambres = [
             2: "dortoir3.jpg"
         },
         "subtitle": "Située au deuxième étage",
-        "li": ["Quatre lits individuels, et un canapé convertible (2 places)", "Équipements : chauffage indépendant, penderie, toilettes"]
+        "li": ["Quatre lits individuels", "Un canapé convertible (2 places)", "Équipements : chauffage indépendant, penderie, toilettes"]
     }
 ];
 

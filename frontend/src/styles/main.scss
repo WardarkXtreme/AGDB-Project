@@ -10,25 +10,24 @@
         color: #BC8212;
         margin-bottom: 40px;
         padding: 2px;
+        height: calc(1vw + 8px);
     }
     .titleName{
-        color: #87BA47;
+        color: #678f35;
         font-family: 'Martel', 'Rubik', serif;
     }
 }
 .textPresentation {
-    color: white;
     text-align: center;
-    font-size: 3.2vw;
+    font-size: calc(1vw + 9px);
     .tp {
         margin: 0;
-        line-height: 20px;
         font-family: 'Open Sans', sans-serif;
     }
 }
 .moviePresentation{
     display: flex;
-    margin-top: 50px;
+    margin-top: 10px;
     .video-react {
         display: flex;
         justify-content: center;

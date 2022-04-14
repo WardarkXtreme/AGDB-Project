@@ -5,7 +5,7 @@
     margin-top: 30px;
 }
 .textSubtitle {
-    color: white;
+    color: black;
     text-align: center;
     margin-top: 0;
 }
@@ -50,20 +50,24 @@
 .informationGite {
     overflow: hidden;
     .btnInfo{
-        color: white;
+        color: black;
         border: none;
         background-color: transparent;
         margin-top: 10px;
     }
 }
-.displayInfo{
+.displayInfo, .displayInfo0, .displayInfo1, .displayInfo2, .displayInfo3, .displayInfo4 {
     display: inherit;
     overflow: hidden;
     animation: info 500ms linear forwards;
 }
+
 .tableTarif {
     text-align: center;
     background-color: grey;
     min-height: 170px;
     display: flex;
+}
+.chambre {
+    margin: 60px 0;
 }
