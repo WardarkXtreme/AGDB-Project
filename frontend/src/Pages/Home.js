@@ -4,6 +4,7 @@ import Main from "../components/Main";
 import Gite from "../components/Gite";
 import Chambre from "../components/Chambres";
 import Tarif from "../components/Tarif";
+import Contact from '../components/Contact';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Gite />
             <Chambre />
             <Tarif />
+            <Contact/>
         </>
     )
 };

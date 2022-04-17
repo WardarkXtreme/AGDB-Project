@@ -32,9 +32,8 @@ exports.sendContact = (req, res) => {
         template: 'contact',
         context: {
             name: req.body.name,
-            lastName: req.body.lastName,
+            firstName: req.body.firstName,
             email: req.body.email,
-            nationality: req.body.nationality,
             numbersPeople: req.body.numbersPeople,
             numbersAdult: req.body.numbersAdult,
             numbersChild: req.body.numbersChild,
