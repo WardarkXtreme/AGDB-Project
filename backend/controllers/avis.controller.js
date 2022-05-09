@@ -3,9 +3,18 @@ const Avis = require('../models/avis.model');
 
 let date;
 date = new Date();
-let jma = date.toLocaleDateString().replace(/[/]/g, "-");
-let hms = date.toLocaleTimeString()
-date = (jma + " " + "à" + " " + hms);
+let jma = date.toLocaleDateString();
+date = (jma);
+
+exports.avis = (req, res) => {
+    let sql = `SELECT * From avis`
+    dbConnect.query(sql, function (err, data) {
+        if (err) {
+            return res.staus(400).json({err})
+        }
+        res.status(200).json(data)
+    })
+}
 
 exports.addAvis = (req, res) => {
     const avis = new Avis({

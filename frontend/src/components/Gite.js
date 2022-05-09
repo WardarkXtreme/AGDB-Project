@@ -1,5 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import imgGite1 from './assets/media/gite1.webp';
+import imgGite2 from './assets/media/gite2.webp';
+import imgGite3 from './assets/media/gite3.webp';
+import imgGite4 from './assets/media/gite4.webp';
+import imgGite5 from './assets/media/gite5.webp';
+import imgGite6 from './assets/media/gite6.webp';
+import imgGiteMobile1 from './assets/media-mobile/gite1Mobile.webp';
+import imgGiteMobile2 from './assets/media-mobile/gite2Mobile.webp';
+import imgGiteMobile3 from './assets/media-mobile/gite3Mobile.webp';
+import imgGiteMobile4 from './assets/media-mobile/gite4Mobile.webp';
+import imgGiteMobile5 from './assets/media-mobile/gite5Mobile.webp';
+import imgGiteMobile6 from './assets/media-mobile/gite6Mobile.webp';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,69 +19,110 @@ import { Carousel } from 'react-responsive-carousel';
 
 function Gite() {
     
-    const [gite, setGite] = useState([]);
     const [cache, setCache] = useState();
+
 
     const toggleCache = () => {
         setCache(!cache)
     };
-    useEffect(() => {
-
-        const getGite = async () => {
-            await axios({
-                url :'http://localhost:3000/api/gite/', 
-                mode: 'cors'
-            }).then((result) => {
-                setGite(result.data)
-            })
-            .catch(err => console.log ({err}))
-        };
-        getGite();
-    }, [])
-    console.log(gite)
     
     return (
         <>
-           <div className='groupeChambre'>
-                {gite.map(item => (
-                    <div className='chambre' key={item.id} id={item.id}>
-                        <h2 className='subtitle'>{item.title}</h2>
-                        <p className='textSubtitle'>{item.headtext}</p>
+           <section className='gite'>
+                    <div className='chambre'>
+                        <h2 className='subtitle'>Des vacances innoubliables !</h2>
+                        <p className='textSubtitle'>Un cocon de charme à Avranches, sur la côte normande.</p>
+                        <p className='textSubtitle'>Situé à seulement 30 minutes du Mont-Saint-Michel !</p>
                         <Carousel>
                             <div>
-                                <img src={item.imageUrl[0]} alt={item.title}/>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite1} 1920w,${imgGiteMobile1} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite1}
+                                    alt="gite-pictures-1"
+                                />
                             </div>
                             <div>
-                                <img src={item.imageUrl[1]} alt={item.title}/>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite2} 1920w,${imgGiteMobile2} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite2}
+                                    alt="gite-pictures-2"
+                                />
                             </div>
                             <div>
-                                <img src={item.imageUrl[2]} alt={item.title}/>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite3} 1920w,${imgGiteMobile3} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite3}
+                                    alt="gite-pictures-3"
+                                />
+                            </div>
+                            <div>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite4} 1920w,${imgGiteMobile4} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite4}
+                                    alt="gite-pictures-4"
+                                />
+                            </div>
+                            <div>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite5} 1920w,${imgGiteMobile5} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite5}
+                                    alt="gite-pictures-5"
+                                />
+                            </div>
+                            <div>
+                                <img 
+                                    className='img-gite' 
+                                    height="1080"
+                                    width="1920"
+                                    srcSet={`${imgGite6} 1920w,${imgGiteMobile6} 960w`}
+                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    src={imgGite6}
+                                    alt="gite-pictures-6"
+                                />
                             </div>
                         </Carousel>
                         <div className='informationGite'>
-                            <div className={`displayNone ${cache ? "displayInfo" + item.id : "displayNone"}`}>
-                                <h3>{item.subtitle1}</h3>
+                            <div className={`displayNone ${cache ? "displayInfo" : "displayNone"}`}>
+                                <h3>Le Gîte :</h3>
                                 <ul>
-                                   {item.li1.map((li) =>(
-                                       <li className='liGite' key={li}>{li}</li>
-                                   ))}
+                                    <li className='liGite'>Un grand séjour, une cuisine, une salle à manger et un salon cosy de 63 m2</li>
+                                    <li className='liGite'>Quatre chambres (dont une suite parentale et une chambres PMR)</li>
+                                    <li className='liGite'>Un dortoir (capacité de six personnes)</li>
                                 </ul> 
-                                <h3>{item.subtitle2}</h3>
+                                <h3>Le jardin aménagé :</h3>
                                 <ul>
-                                   {item.li2.map((li) =>(
-                                       <li className='liGite' key={li}>{li}</li>
-                                   ))}
+                                    <li className='liGite'>Vous retrouverez pour vos loisirs plusieurs équipements de plein air(terrain de pétanque, jeu de molki, tennis de table, badminton et hamac)</li>
+                                    <li className='liGite'>Ces équipements sont à votre disposition pour votre séjour</li>
                                 </ul>                             
                             </div>
                             {!cache ? 
-                                <button className='btnInfo' onClick={toggleCache}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD'/></button>
+                                <div className='btnInfo'><FontAwesomeIcon onClick={toggleCache} icon={faAngleDown} className='icoArrowD' /></div>
                                 :
-                                <button className='btnInfo' onClick={toggleCache}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU'/></button>
+                                <div className='btnInfo'><FontAwesomeIcon onClick={toggleCache} icon={faAngleUp} className='icoArrowU' /></div>
                             }
                         </div>
                     </div> 
-                ))}
-            </div> 
+            </section> 
         </>
     )
 };

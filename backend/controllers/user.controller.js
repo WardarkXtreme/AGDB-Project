@@ -21,8 +21,8 @@ function generateString(length) {
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.MDPEMAIL
+        user: process.env.CONTACT_MAIL,
+        pass: process.env.MDPCONTACT
     }
 });
 
@@ -56,19 +56,21 @@ exports.signup = (req, res) => {
 
     transporter.sendMail(mailOptions, function (err, info) {
         if(err) {
-            return res.statut(400).json({err});
+            return res.status(400).json({err});
         }
         else {
             bcrypt.hash(stkmdp, 10)
             .then(hash => {
+                
                 const user = new User({
                     name: req.body.name,
                     lastName: req.body.lastName,
                     email: req.body.email,
-                    password: hash
+                    password: hash,
+                    role: 0
                 });
-                let sql = `INSERT INTO users (name, lastName, email, password) VALUES (?)`;
-                let values = [user.name, user.lastName, user.email, user.password];
+                let sql = `INSERT INTO users (name, lastName, email, password, role) VALUES (?)`;
+                let values = [user.name, user.lastName, user.email, user.password, user.role];
                 dbConnect.query(sql, [values], function(err, data) {
                     if (err) {
                         return res.status(400).json({err});

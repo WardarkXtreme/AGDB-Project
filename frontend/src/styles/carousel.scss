@@ -1,7 +1,12 @@
+.carousel-root {
+    max-width: 1024px;
+}
 .thumbs-wrapper, .carousel-status {
     display: none;
 }
-.carousel .control-dots .dot {
-    height: 10px;
-    width: 10px;
+.control-dots {
+    display: none;
+}
+.control-arrow {
+    font-size: 35px;
 }

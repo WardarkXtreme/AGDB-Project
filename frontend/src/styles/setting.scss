@@ -1,28 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
-
 .displayNone {
     display: none;
 }
 
-body{
+body, .menu{
     margin: 0;
     padding: 0;
-    background-repeat: no-repeat;
+    background: radial-gradient(darkgrey, transparent);
 }
-h1 {
-    font-size: calc(8vw + 5px);
-    margin-bottom: 0px;
+h1{
+    color: #678f35;
+    font-size: 2em;
+    margin: 15px 0;
 }
 h2 {
-    font-size: calc(8vw + 5px);
-    font-family: 'Tangerine', cursive;
     color: #BC8212;
 }
 h3 {
     color: #BC8212;
-    font-family: 'Tangerine', cursive;
-    font-size: 1.8em;
+    font-size: 1.3em;
     padding-left: 6px;
+    margin: 8px 0;
+}
+section{
+    z-index: 0;
+}
+@media (min-width: 600px) {
+    h1{
+        font-size: 2.3em;
+    }
+    h3{
+        font-size: 1.8em;
+    }
 }
 ul{
     margin: 0;
@@ -32,6 +40,12 @@ ul{
     color: black;
     list-style-type: none;
     padding-bottom: 10px;
+    font-size: 1.03em;
+}
+@media (min-width: 600px) {
+    .liGite{
+        font-size: 1.5em;
+    }
 }
 .liGite::before { content: "* "; color: #BC8212}
 table {

@@ -1,0 +1,104 @@
+.avis {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    margin: 10px 0;
+    .nbrAvis{
+        font-family: none;
+        color: black;
+    }
+    .avi {
+        animation: avi 0.5s linear forwards;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-width: 800px;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 1.2em;
+        margin: 10px 0;
+        min-height: 75px;
+        border: 1px solid #BC8212;
+        box-shadow: 0 0 15px grey;
+        .fullName {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            .agentNameAndNote {
+                display: inline-flex;
+                align-items: center;
+                width: 90%;
+                justify-content: space-between;
+                color: black;
+                padding: 8px 0;
+                font-size: 20px;
+                font-weight: 600;
+                .rating-star{
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+        .avis-comment {
+            display: flex;
+            width: 90%;
+        }
+        .avis-date{
+            display: flex;
+            width: 90%;
+            justify-content: flex-end;
+            padding-top: 10px;
+        }
+    }
+}
+.group-avis-btn {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 80%;
+    max-width: 800px;
+    justify-content: space-around;
+    .avis-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 34px;
+        border: 2px solid #BC8212;
+        background-color: white;
+        color: black;
+        border-radius: 2em;
+        font-size: 14px;
+        filter: drop-shadow(2px 2px 4px black);
+        cursor: pointer;
+        margin: 20px 0;
+    }
+    @media (min-width: 600px) {
+        .avis-btn {
+            font-size: 20px;
+            max-width: 200px;
+        }
+    }
+}
+.avis, .fullName, .agentNameAndNote {
+    height: fit-content;  
+}
+.avis p, .fullName p, .agentNameAndNote p {
+    margin: 0; 
+}
+@media (min-width: 600px) {
+    .fullName p{
+        font-size: 25px;
+    }
+    .sc-dkzDqf svg{
+        height: 35px;
+        width: 35px;
+    }
+    .comment{
+        font-size: 20px;
+    }
+    .date{
+        font-size: 18px;
+    }
+}

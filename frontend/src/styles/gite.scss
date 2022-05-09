@@ -1,19 +1,39 @@
 @import './animations.scss';
 .subtitle{
-    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
     margin-bottom: 0;
     margin-top: 30px;
+    font-size: 1.6em;
+}
+@media (min-width: 600px) {
+    .subtitle{
+        font-size: 1.9em;
+    }
 }
 .textSubtitle {
     color: black;
     text-align: center;
     margin-top: 0;
+    font-size: 1.03em;
+    max-width: 1024px;
 }
-
+@media (min-width: 600px) {
+    .textSubtitle{
+        font-size: 1.3em;
+    }
+}
+.img-gite {
+    display: flex;
+    width: 100vw;
+    height: auto;
+    max-width: 1024px;
+}
 .picGite {
     animation: fadein 1s linear forwards;
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: auto;
     object-fit: contain;
 }
@@ -46,28 +66,94 @@
     color: black;
     font-size: large;
 }
-
-.informationGite {
-    overflow: hidden;
+.btnInfo{
+    font-size: 1.06em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1024px;
+    color: black;
+    border: none;
+    padding: 10px 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+@media (min-width: 600px) {
     .btnInfo{
-        color: black;
-        border: none;
-        background-color: transparent;
-        margin-top: 10px;
+        font-size: 22px;
     }
 }
-.displayInfo, .displayInfo0, .displayInfo1, .displayInfo2, .displayInfo3, .displayInfo4 {
-    display: inherit;
-    overflow: hidden;
-    animation: info 500ms linear forwards;
-}
-
-.tableTarif {
-    text-align: center;
-    background-color: grey;
-    min-height: 170px;
+.displayInfo {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    width: 100%;
+    animation: info 0.5s linear forwards;
+}
+.tarif-gite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .tableTarif {
+        text-align: center;
+        background: darkgoldenrod;
+        min-height: 170px;
+        width: 100%;
+        max-width: 1024px;
+        display: flex;
+        box-shadow: inset 0 0 5px white;
+        .table-one {
+            background: rgba(255, 255, 255, 0.57);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .table-price {
+        background: rgba(255, 255, 255, 0.57);
+        box-shadow: 0 4px 30px rgba(136, 135, 135, 0.5);
+        }
+    }
+}
+.pHeure {
+    color: black;
+    font-size: 20px;
+}
+@media (min-width: 600px) {
+    .tarif-gite{
+        font-size: 18px;
+    }
+    .pHeure {
+        font-size: 28px;
+    }
+}
+.igcontent, .informationGite{
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    flex-direction: column;
+    align-items: center;
 }
 .chambre {
-    margin: 60px 0;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.icoArrowU, .icoArrowD{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    color: aliceblue;
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: #BC8212;
+    box-shadow: 0px 0px 7px black;
+    margin: 0 15px;
+}
+.icoArrowD{
+    animation: turnIcoD linear 0.5s forwards;
+}
+.icoArrowU{
+    animation: turnIcoU linear 0.5s forwards;
 }

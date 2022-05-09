@@ -31,7 +31,7 @@ exports.sendContact = (req, res) => {
         subject: '(Reservation)AuGiteDuBois',
         template: 'contact',
         context: {
-            name: req.body.name,
+            lastName: req.body.lastName,
             firstName: req.body.firstName,
             email: req.body.email,
             numbersPeople: req.body.numbersPeople,
