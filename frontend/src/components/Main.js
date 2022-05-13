@@ -12,15 +12,15 @@ function Main() {
     console.log(size)
     return (
         <section className='header-vids'>
-            <div className='titleGroupe'>
-                <h1 className='titleName'>Au Gîte Du Bois</h1>
-            </div>
+            <h1 className='titleName'>Au Gîte Du Bois</h1>
             <div className='textPresentation'>
-                <p className='tp'>Réservez vos vacances dans un gîte quatre étoiles</p>
-                <p className='tp'>au coeur de nombreuses destinations touristiques.</p>
-                <p className='tp'>Un lieu remplie de charme, calme et reposant.</p>
-                <p className='tp'>Entre mer et verdure, les amateurs d'escapades bucoliques,</p>
-                <p className='tp'>seront sensibles au style moderne et à l'ambiance conviviale revendiquée.</p>
+                <p className='tp'>
+                    Réservez vos vacances dans un gîte quatre étoiles
+                    au coeur de nombreuses destinations touristiques.
+                    Un lieu remplie de charme, calme et reposant.
+                    Entre mer et verdure, les amateurs d'escapades bucoliques,
+                    seront sensibles au style moderne et à l'ambiance conviviale revendiquée.
+                </p>
             </div>
             <div className='moviePresentation'>
                 {size > 600 ?

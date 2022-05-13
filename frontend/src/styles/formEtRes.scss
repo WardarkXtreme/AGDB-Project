@@ -1,0 +1,16 @@
+.group-form_contact{
+    @include card;
+    .group-reservation-btn{
+        @include flex-column;
+        margin: 20px 0;
+        min-height: 130px;
+        justify-content: space-around;
+        .reservation-btn{
+            @include btn;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

@@ -37,10 +37,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite1} 1920w,${imgGiteMobile1} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite1} 768w,${imgGiteMobile1} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite1}
                                     alt="gite-pictures-1"
                                 />
@@ -48,10 +48,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite2} 1920w,${imgGiteMobile2} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite2} 768w,${imgGiteMobile2} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite2}
                                     alt="gite-pictures-2"
                                 />
@@ -59,10 +59,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite3} 1920w,${imgGiteMobile3} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite3} 768w,${imgGiteMobile3} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite3}
                                     alt="gite-pictures-3"
                                 />
@@ -70,10 +70,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite4} 1920w,${imgGiteMobile4} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite4} 768w,${imgGiteMobile4} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite4}
                                     alt="gite-pictures-4"
                                 />
@@ -81,10 +81,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite5} 1920w,${imgGiteMobile5} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite5} 768w,${imgGiteMobile5} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite5}
                                     alt="gite-pictures-5"
                                 />
@@ -92,10 +92,10 @@ function Gite() {
                             <div>
                                 <img 
                                     className='img-gite' 
-                                    height="1080"
-                                    width="1920"
-                                    srcSet={`${imgGite6} 1920w,${imgGiteMobile6} 960w`}
-                                    syzes="(max-width: 600px) 960px, 1920px"
+                                    height="432"
+                                    width="768"
+                                    srcSet={`${imgGite6} 768w,${imgGiteMobile6} 480w`}
+                                    syzes="(max-width: 600px) 480px, 768px"
                                     src={imgGite6}
                                     alt="gite-pictures-6"
                                 />

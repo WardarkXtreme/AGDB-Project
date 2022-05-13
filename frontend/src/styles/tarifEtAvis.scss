@@ -1,0 +1,82 @@
+.responsive-tarif-avis{
+    @include flex-column;
+    width: 100%
+}
+.tarif-gite{
+    @include card;
+    .tableTarif {
+        display: flex;
+        width: 100%;
+        max-width: 768px;
+        min-height: 170px;
+        text-align: center;
+        background: darkgoldenrod;
+        box-shadow: inset 0 0 5px white;
+        .table-one, .table-price{
+            background: rgba(255, 255, 255, 0.57);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+    }
+    .igcontent{
+        @include flex-column;
+        width: 100%;
+        max-width: 768px;
+    }
+}
+.avis{
+    @include card;
+    width: 99%;
+    margin: 90px 0 0 0;
+    .avi{
+        @include flex-column;
+        animation: avi 200ms linear forwards;
+        width: 80%;
+        max-width: 768px;
+        justify-content: space-between;
+        border-radius: 1em;
+        margin: 10px 0;
+        min-height: 75px;
+        height: fit-content;
+        border: 1px solid #BC8212;
+        background: rgba(255, 255, 255, 0.29);
+        box-shadow: 0 0 15px grey;
+        .fullName{
+            @include flex-center;
+            .agentNameAndNote{
+                @include flex-center;
+                justify-content: space-around;
+                align-items: center;
+                font-weight: 600;
+            }
+        }
+        .avis-comment, .avis-date{
+            display: flex;
+            width: 90%;
+        }
+        .avis-date{
+            justify-content: flex-end;
+            padding-top: 10px;
+        }
+    }
+    .group-avis-btn{
+        display: flex;
+        width: 80%;
+        max-width: 768px;
+        justify-content: space-around;
+        .avis-btn{
+            @include btn;
+        }
+    }
+}
+.comment, .date{
+    margin: 0;
+}
+.NameAndNote{
+    display: inline-flex;
+    width: 90%;
+    color: darkgoldenrod;
+    max-width: 720px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}

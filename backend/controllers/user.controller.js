@@ -98,7 +98,8 @@ exports.login = (req, res) => {
                 res.status(200).json({
                     id: data[0].id,
                     name: data[0].name,
-                    lastName: data[0].lastName 
+                    lastName: data[0].lastName,
+                    role: data[0].role
                 })
             })
             .catch(error => res.status(500).json({error}));  

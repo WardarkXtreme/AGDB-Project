@@ -54,9 +54,9 @@ function Dortoir() {
                         </ul>
                     </div>
                     {!cache ?
-                        <button className='btnInfo' onClick={toggleCache}>Plus d'informations <FontAwesomeIcon icon={faAngleDown} className='icoArrowD' /></button>
+                        <div className='btnInfo' onClick={toggleCache}><FontAwesomeIcon icon={faAngleDown} className='icoArrowD' /></div>
                         :
-                        <button className='btnInfo' onClick={toggleCache}>Moins d'informations <FontAwesomeIcon icon={faAngleUp} className='icoArrowU' /></button>
+                        <div className='btnInfo' onClick={toggleCache}><FontAwesomeIcon icon={faAngleUp} className='icoArrowU' /></div>
                     }
                 </div>
             </div> 

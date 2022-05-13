@@ -30,10 +30,10 @@ function Rose() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambrerose1} 1920w,${imgchambreroseMobile1} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambrerose1} 768w,${imgchambreroseMobile1} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambrerose1}
                             alt="chambre-rose-pictures-1"
                         />
@@ -41,10 +41,10 @@ function Rose() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambrerose2} 1920w,${imgchambreroseMobile2} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambrerose2} 768w,${imgchambreroseMobile2} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambrerose2}
                             alt="chambre-rose-pictures-2"
                         />
@@ -52,10 +52,10 @@ function Rose() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambrerose3} 1920w,${imgchambreroseMobile3} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambrerose3} 768w,${imgchambreroseMobile3} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambrerose3}
                             alt="chambre-rose-pictures-3"
                         />
@@ -63,10 +63,10 @@ function Rose() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambrerose4} 1920w,${imgchambreroseMobile4} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambrerose4} 768w,${imgchambreroseMobile4} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambrerose4}
                             alt="chambre-rose-pictures-4"
                         />
@@ -74,10 +74,10 @@ function Rose() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambrerose5} 1920w,${imgchambreroseMobile5} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambrerose5} 768w,${imgchambreroseMobile5} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambrerose5}
                             alt="chambre-rose-pictures-5"
                         />

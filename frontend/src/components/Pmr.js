@@ -26,15 +26,16 @@ function Pmr() {
 
             <div className='chambre'>
                 <h2 className='subtitle'>Chambre PMR</h2>
-                <p className='textSubtitle'>Accessible aux personnes à mobilités réduites ! Optimisé pour garantir accessibilité, autonomie maximale, confort et sécurité !</p>
+                <p className='textSubtitle'>Accessible aux personnes à mobilités réduites !</p>
+                <p className='textSubtitle'>Optimisé pour garantir accessibilité, autonomie maximale, confort et sécurité !</p>
                 <Carousel>
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgpmr1} 1920w,${imgpmrMobile1} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgpmr1} 768w,${imgpmrMobile1} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgpmr1}
                             alt="pmr-pictures-1"
                         />
@@ -42,10 +43,10 @@ function Pmr() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgpmr2} 1920w,${imgpmrMobile2} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgpmr2} 768w,${imgpmrMobile2} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgpmr2}
                             alt="pmr-pictures-2"
                         />
@@ -53,10 +54,10 @@ function Pmr() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgpmr3} 1920w,${imgpmrMobile3} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgpmr3} 768w,${imgpmrMobile3} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgpmr3}
                             alt="pmr-pictures-3"
                         />
@@ -64,10 +65,10 @@ function Pmr() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgpmr4} 1920w,${imgpmrMobile4} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgpmr4} 768w,${imgpmrMobile4} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgpmr4}
                             alt="pmr-pictures-4"
                         />
@@ -75,10 +76,10 @@ function Pmr() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgpmr5} 1920w,${imgpmrMobile5} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgpmr5} 768w,${imgpmrMobile5} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgpmr5}
                             alt="pmr-pictures-5"
                         />

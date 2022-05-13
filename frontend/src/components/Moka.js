@@ -30,10 +30,10 @@ function Moka() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambremoka1} 1920w,${imgchambremokaMobile1} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambremoka1} 768w,${imgchambremokaMobile1} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambremoka1}
                             alt="chambremoka-pictures-1"
                         />
@@ -41,10 +41,10 @@ function Moka() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambremoka2} 1920w,${imgchambremokaMobile2} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambremoka2} 768w,${imgchambremokaMobile2} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambremoka2}
                             alt="chambremoka-pictures-2"
                         />
@@ -52,10 +52,10 @@ function Moka() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambremoka3} 1920w,${imgchambremokaMobile3} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambremoka3} 768w,${imgchambremokaMobile3} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambremoka3}
                             alt="chambremoka-pictures-3"
                         />
@@ -63,10 +63,10 @@ function Moka() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambremoka4} 1920w,${imgchambremokaMobile4} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambremoka4} 768w,${imgchambremokaMobile4} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambremoka4}
                             alt="chambremoka-pictures-4"
                         />
@@ -74,10 +74,10 @@ function Moka() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgchambremoka5} 1920w,${imgchambremokaMobile5} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgchambremoka5} 768w,${imgchambremokaMobile5} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgchambremoka5}
                             alt="chambremoka-pictures-5"
                         />

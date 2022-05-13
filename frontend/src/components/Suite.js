@@ -26,10 +26,10 @@ function Suite() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgsuite1} 1920w,${imgsuiteMobile1} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgsuite1} 768w,${imgsuiteMobile1} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgsuite1}
                             alt="suite-pictures-1"
                         />
@@ -37,10 +37,10 @@ function Suite() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgsuite2} 1920w,${imgsuiteMobile2} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgsuite2} 768w,${imgsuiteMobile2} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgsuite2}
                             alt="suite-pictures-2"
                         />
@@ -48,10 +48,10 @@ function Suite() {
                     <div>
                         <img
                             className='img-gite'
-                            height="1080"
-                            width="1920"
-                            srcSet={`${imgsuite3} 1920w,${imgsuiteMobile3} 960w`}
-                            syzes="(max-width: 600px) 960px, 1920px"
+                            height="432"
+                            width="768"
+                            srcSet={`${imgsuite3} 768w,${imgsuiteMobile3} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
                             src={imgsuite3}
                             alt="suite-pictures-1"
                         />

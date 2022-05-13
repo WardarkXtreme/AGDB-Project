@@ -5,7 +5,8 @@ import Gite from "../components/Gite";
 import Chambre from "../components/Chambres";
 import Tarif from "../components/Tarif";
 import Avis from "../components/Avis";
-import Contact from '../components/Contact';
+import Reservation from '../components/Reservation';
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -15,9 +16,14 @@ const Home = () => {
                 <Main />
                 <Gite />
                 <Chambre />
-                <Tarif />
-                <Avis />
-                <Contact />
+                <div className="responsive-tarif-avis">
+                    <Tarif />
+                    <Avis />
+                </div>
+                <Reservation />
+                <footer className="footer">
+                    <Footer />
+                </footer>
             </main>
         </>
     )
