@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Reservation() {
 
   const [displayForm, setDisplayForm] = useState(false);
-
+  const [anim, setAnim] = useState(false);
+  const [valid, setValid] = useState();
   const [dateStart, setDateStart] = useState();
   const [valueStart, setValueStart] = useState([]);
   const [valueRangePeople, setValueRangePeople] = useState(2);
@@ -23,7 +26,7 @@ function Reservation() {
   const regExLastName = /^(([a-zA-Z-]{3,10}))$/;
   const regExFirstName = /^(([a-zA-Z-]{3,10}))$/;
   const regExMail = /^(([a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
-  const regExMessage = /^(([a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{40,150}))$/;
+  const regExMessage = /^(([a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-']{40,150}))$/;
 
   const verifyLastName = regExLastName.test(lastName);
   const verifyFirstName = regExFirstName.test(firstName);
@@ -133,10 +136,18 @@ function Reservation() {
         data: data
       })
         .then(res => {
-          console.log(res)
+          setValid(true)
+          setAnim(!anim)
+          setTimeout(() => {
+              window.location.reload()
+          }, 6000);
         })
         .catch(error => {
-          console.log(error)
+          setValid(false)
+          setAnim(!anim)
+          setTimeout(() => {
+              window.location.reload()
+          }, 6000);
         })
     } else {
       console.log('rien')
@@ -162,69 +173,93 @@ function Reservation() {
           </div>
         </div>
       :
-        <div className="contentForm">
-          <form className='form'>
-            <label className='nameForm'>
-              <input className='inputForm' placeholder='Nom' name='name' type="text" onChange={handleLastName} />
-            </label>
-            <label className='nameForm'>
-              <input className='inputForm' placeholder='Prénom' name='firstName' type="text" onChange={handleFirstName} />
-            </label>
-            <label className='nameForm'>
-              <input className='inputForm' placeholder='Email' name='email' type="text" onChange={handleMail} />
-            </label>
-            <label className='nbrForm'>
-              <p className='pForm'>Nombre de personnes :</p>
-              <div className='rangeGroup'>
-                <p className='pForm'>{valueRangePeople}</p>
-                <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangePeople} onChange={(e) => { setValueRangePeople(e.target.value) }} />
-              </div>
-            </label>
-            <label className='nbrForm'>
-              <p className='pForm'>Nombre d'adultes :</p>
-              <div className='rangeGroup'>
-                <p className='pForm'>{valueRangeAdult}</p>
-                <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangeAdult} onChange={(e) => { setValueRangeAdult(e.target.value) }} />
-              </div>
-            </label>
-            <label className='nbrForm'>
-              <p className='pForm'>Nombre d'enfants :</p>
-              <div className='rangeGroup'>
-                <p className='pForm'>{valueRangeChild}</p>
-                <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='0' max='14' defaultValue={valueRangeChild} onChange={(e) => { setValueRangeChild(e.target.value) }} />
-              </div>
-            </label>
-            {valueError === true ?
-              <p className='rangeError'>Veuillez indiquer le nombre de personnes total, ensuite indiquez combien d'adultes et combien d'enfants composent votre réservation.</p>
+        <> 
+          {anim === false ?
+            <div className="contentForm">
+              <form className='form'>
+                <label className='nameForm'>
+                  <input className='inputForm' placeholder='Nom' name='name' type="text" onChange={handleLastName} />
+                </label>
+                <label className='nameForm'>
+                  <input className='inputForm' placeholder='Prénom' name='firstName' type="text" onChange={handleFirstName} />
+                </label>
+                <label className='nameForm'>
+                  <input className='inputForm' placeholder='Email' name='email' type="text" onChange={handleMail} />
+                </label>
+                <label className='nbrForm'>
+                  <p className='pForm'>Nombre de personnes :</p>
+                  <div className='rangeGroup'>
+                    <p className='pForm'>{valueRangePeople}</p>
+                    <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangePeople} onChange={(e) => { setValueRangePeople(e.target.value) }} />
+                  </div>
+                </label>
+                <label className='nbrForm'>
+                  <p className='pForm'>Nombre d'adultes :</p>
+                  <div className='rangeGroup'>
+                    <p className='pForm'>{valueRangeAdult}</p>
+                    <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangeAdult} onChange={(e) => { setValueRangeAdult(e.target.value) }} />
+                  </div>
+                </label>
+                <label className='nbrForm'>
+                  <p className='pForm'>Nombre d'enfants :</p>
+                  <div className='rangeGroup'>
+                    <p className='pForm'>{valueRangeChild}</p>
+                    <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='0' max='14' defaultValue={valueRangeChild} onChange={(e) => { setValueRangeChild(e.target.value) }} />
+                  </div>
+                </label>
+                {valueError === true ?
+                  <p className='rangeError'>Veuillez indiquer le nombre de personnes total, ensuite indiquez combien d'adultes et combien d'enfants composent votre réservation.</p>
+                  :
+                  null
+                }
+                <p className='pForm'>Choisissez les dates que vous souhaitez reserver.</p>
+                <Calendar selectRange={true} minDate={dateStart} defaultValue={dateStart} onChange={setValueStart} />
+                {valueStart.length > 0 ?
+                  <div className="rplDate">
+                    <p>Du {`${valueStart[0].toLocaleDateString()}`}</p>
+                    <p>Au {`${valueStart[1].toLocaleDateString()}`}</p>
+                  </div>
+                  :
+                  null
+                }
+                <label className='messageForm'>
+                  <p className='pForm'>Message :</p>
+                  <textarea className='messageFormIn' onChange={handleMessage} />
+                  {message.length <= 39 ?
+                    <p className='rangeError'>{message.length}/40 caracteres minimum attendus</p>
+                    :
+                    null
+                  }
+                </label>
+                {readySend === true ?
+                  <button className='send-true' onClick={submit}>envoyer</button>
+                  :
+                  <button className='send-false' onClick={(e) => { e.preventDefault() }}>envoyer</button>
+                }
+              </form>
+            </div>
+          :
+            <>              
+              {valid === true ? 
+                  <>
+                      <div className='Ball'>
+                          <FontAwesomeIcon icon={faCheck} className='ico-ball'/>
+                      </div>
+                      <p className='p-ball'>Votre demande est envoyé</p>
+                      <p className='p-ball'>Veuillez attendre la redirection automatique</p>
+                  </>
               :
-              null
-            }
-            <p className='pForm'>Choisissez les dates que vous souhaitez reserver.</p>
-            <Calendar selectRange={true} minDate={dateStart} defaultValue={dateStart} onChange={setValueStart} />
-            {valueStart.length > 0 ?
-              <div className="rplDate">
-                <p>Du {`${valueStart[0].toLocaleDateString()}`}</p>
-                <p>Au {`${valueStart[1].toLocaleDateString()}`}</p>
-              </div>
-              :
-              null
-            }
-            <label className='messageForm'>
-              <p className='pForm'>Message :</p>
-              <textarea className='messageFormIn' onChange={handleMessage} />
-              {message.length <= 39 ?
-                <p className='rangeError'>{message.length}/40 caracteres minimum attendus</p>
-                :
-                null
+                  <>
+                      <div className='Ball'>
+                          <FontAwesomeIcon icon={faXmark} className='ico-ball'/>
+                      </div>
+                      <p className='p-ball'>Erreur innatendue, veuillez rééssayer</p>
+                      <p className='p-ball'>Veuillez attendre la redirection automatique</p>
+                  </>
               }
-            </label>
-            {readySend === true ?
-              <button className='send-true' onClick={submit}>envoyer</button>
-              :
-              <button className='send-false' onClick={(e) => { e.preventDefault() }}>envoyer</button>
-            }
-          </form>
-        </div>
+            </>
+          }
+        </> 
       }
     </section>
   );

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.48a7e962.css",
-    "main.js": "/static/js/main.a74b1997.js",
+    "main.css": "/static/css/main.8e4d836a.css",
+    "main.js": "/static/js/main.17ae8bba.js",
     "static/media/gitevideo1920hd.mp4": "/static/media/gitevideo1920hd.7460063597f290931e97.mp4",
     "static/media/gitevideo720hd.mp4": "/static/media/gitevideo720hd.1add41b253fd83a0e801.mp4",
     "static/media/gite1.webp": "/static/media/gite1.36b300773bb420ad2d2a.webp",
@@ -60,7 +60,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.48a7e962.css",
-    "static/js/main.a74b1997.js"
+    "static/css/main.8e4d836a.css",
+    "static/js/main.17ae8bba.js"
   ]
 }

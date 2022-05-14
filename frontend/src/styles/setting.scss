@@ -75,3 +75,11 @@ a{
     text-decoration: none;
     color: black;
 }
+.Afooter{
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    :nth-child(1):hover{
+        color: blue;
+    }
+}

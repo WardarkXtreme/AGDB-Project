@@ -37,7 +37,7 @@ exports.addAvis = (req, res) => {
 
 exports.delAvis = (req, res) => {
     let sql = `DELETE FROM avis WHERE idAvis = ?`;
-    dbConnect.query(sql, [req.params.id], function (err, data) {
+    dbConnect.query(sql, [req.body.id], function (err, data) {
         if (err) {
             return res.status(400).json({err});
         }
