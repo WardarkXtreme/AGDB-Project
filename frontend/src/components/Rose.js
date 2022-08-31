@@ -25,7 +25,7 @@ function Rose() {
         <>
 
             <div className='chambre'>
-                <h2 className='subtitle'>Chambre Rose Poudrée</h2>
+                <h2 className='subtitle'>Chambre Rose Poudré</h2>
                 <Carousel>
                     <div>
                         <img
@@ -89,7 +89,7 @@ function Rose() {
                         <ul>
                             <li className='liGite'>Un lit double</li>
                             <li className='liGite'>Équipements en suite : chauffage indépendant, penderie</li>
-                            <li className='liGite'>Commun à l’étage : accès salle de bain avec douche, toilettes et Sauna 4 personnes</li>
+                            <li className='liGite'>Commun à l’étage : accès salle de bain avec douche, toilettes, Sauna 4 personnes</li>
                         </ul>
                     </div>
                     {!cache ?

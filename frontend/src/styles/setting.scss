@@ -9,7 +9,7 @@ body, .menu{
     align-items: center;
 }
 body{
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(102,62,17,1) 48%, rgba(102,62,17,1) 48%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(102,62,17,1) 50%, rgba(0,0,0,1) 100%);
 }
 main{
     display: flex;
@@ -20,12 +20,12 @@ main{
 }
 h1{
     color: #678f35;
-    font-size: 2em;
+    font-size: 40px;
     margin: 15px 0;
 }
 h2 {
     @include flex-center;
-    font-size: 20px;
+    font-size: 25px;
     color: #BC8212;
 }
 .textSubtitle{

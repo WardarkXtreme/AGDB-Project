@@ -26,7 +26,7 @@ function Pmr() {
 
             <div className='chambre'>
                 <h2 className='subtitle'>Chambre PMR</h2>
-                <p className='textSubtitle'>Accessible aux personnes à mobilités réduites !</p>
+                <p className='textSubtitle'>Accessible aux personnes à mobilité réduite !</p>
                 <p className='textSubtitle'>Optimisé pour garantir accessibilité, autonomie maximale, confort et sécurité !</p>
                 <Carousel>
                     <div>

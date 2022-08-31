@@ -30,13 +30,13 @@ function Gite() {
         <>
            <section className='gite'>
                     <div className='chambre'>
-                        <h2 className='subtitle'>Des vacances innoubliables !</h2>
+                        <h2 className='subtitle'>Des vacances inoubliables !</h2>
                         <p className='textSubtitle'>Un cocon de charme à Avranches, sur la côte normande.</p>
-                        <p className='textSubtitle'>Situé à seulement 30 minutes du Mont-Saint-Michel !</p>
+                        <p className='textSubtitle'>Situé à seulement 30 minutes du Mont Saint-Michel !</p>
                         <Carousel>
                             <div>
                                 <img 
-                                    className='img-gite' 
+                                    className='img-valeur' 
                                     height="432"
                                     width="768"
                                     srcSet={`${imgGite1} 768w,${imgGiteMobile1} 480w`}
@@ -106,7 +106,7 @@ function Gite() {
                                 <h3>Le Gîte :</h3>
                                 <ul>
                                     <li className='liGite'>Un grand séjour, une cuisine, une salle à manger et un salon cosy de 63 m2</li>
-                                    <li className='liGite'>Quatre chambres (dont une suite parentale et une chambres PMR)</li>
+                                    <li className='liGite'>Quatre chambres (dont une suite parentale et une chambre PMR)</li>
                                     <li className='liGite'>Un dortoir (capacité de six personnes)</li>
                                 </ul> 
                                 <h3>Le jardin aménagé :</h3>

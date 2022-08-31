@@ -11,7 +11,7 @@ function Avis() {
     useEffect(() => {
         const getAvis = async (num) => {
             await axios({
-                url: 'http://localhost:3000/api/avis/',
+                url: 'https://www.augitedubois.com/api/avis/',
                 mode: 'cors'
             }).then((result) => {
                 let array = result.data.slice(0, count)
@@ -22,7 +22,6 @@ function Avis() {
         };
         getAvis();
     }, [count])
-    console.log(avis)
 
     return (
         <>

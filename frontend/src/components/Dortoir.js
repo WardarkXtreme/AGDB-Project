@@ -46,7 +46,7 @@ function Dortoir() {
                 </Carousel>
                 <div className='informationGite'>
                     <div className={`displayNone ${cache ? "displayInfo" : "displayNone"}`}>
-                        <h3>Située au deuxième étage</h3>
+                        <h3>Situé au deuxième étage</h3>
                         <ul>
                             <li className='liGite'>Quatre lits individuels</li>
                             <li className='liGite'>Un canapé convertible (2 places)</li>

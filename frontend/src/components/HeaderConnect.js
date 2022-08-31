@@ -3,7 +3,7 @@ import Axios from 'axios';
 import logo from '../img/logo-gitedubois.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-
+import { Navigate } from 'react-router';
 function HeaderConnect() {
 
     const [readySend, setReadySend] = useState(false);
@@ -12,7 +12,7 @@ function HeaderConnect() {
     const [checkOne, setCheckOne] = useState(true);
     const [checkTwo, setCheckTwo] = useState(true);
 
-    const regExMail = /^(([a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
+    const regExMail = /^(([a-zA-Z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
     const regExPassword = /^(([a-zA-Z0-9@%&]{10,20}))$/;
 
     const verifyMail = regExMail.test(mail);
@@ -43,11 +43,9 @@ function HeaderConnect() {
 
     const handleCheckOne = () => {
         setCheckOne(!checkOne)
-        console.log(checkOne)
     }
     const handleCheckTwo = () => {
         setCheckTwo(!checkTwo)
-        console.log(checkTwo)
     }
 
     useEffect(() => {
@@ -71,23 +69,31 @@ function HeaderConnect() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                url: "http://localhost:3000/api/auth/login",
+                url: "https://www.augitedubois.com/api/auth/login",
                 mode: 'cors',
                 data: data
             })
                 .then(res => {
                     console.log(res.data.role)
                     if (res.data.role === 0) {
+                        sessionStorage.setItem("id", res.data.id)
                         sessionStorage.setItem("name", res.data.name)
                         sessionStorage.setItem("lastName", res.data.lastName)
-                        document.location = "/User"
+                        sessionStorage.setItem("token", res.data.token)
+                        
+                        document.location.hash = "#/User";
+                        
                     }
                     if(res.data.role === 1) {
-                        document.location = "/Admin"
+                        sessionStorage.setItem("id", res.data.id)
+                        sessionStorage.setItem("name", res.data.name)
+                        sessionStorage.setItem("lastName", res.data.lastName)
+                        sessionStorage.setItem("token", res.data.token)
+                        document.location.hash = "#/Admin";
                     }
                 })
                 .catch(error => {
-                    document.location= "connexion"
+                    document.location= "/"
                 })
         } else {
             console.log('rien')
@@ -117,7 +123,7 @@ function HeaderConnect() {
                             <input type="checkbox" onClick={handleCheckTwo} />
                             J'autorise Au Gite Du Bois à publier mon nom.
                         </label>
-                        {readySend === true ?
+                        {readySend ?
                             <button className='send-true' onClick={submit}>Se connecter</button>
                             :
                             <button className='send-false' onClick={(e) => { e.preventDefault() }}>Se Connecter</button>

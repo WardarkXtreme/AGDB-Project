@@ -47,7 +47,9 @@
         animation: scale 0.5s linear forwards;
         flex-direction: column;
         justify-content: space-around;
-        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(15.5px);
+        backdrop-filter: blur(15.5px);
+        background: #f0f0f029;
         align-items: center;
         z-index: 1;
         .btn_nav_form {

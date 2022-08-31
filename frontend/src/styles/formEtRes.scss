@@ -14,3 +14,18 @@
         }
     }
 }
+.activity{
+    @include card;
+    .img-activity{
+        height: auto;
+        width: 100%;
+    }
+    .link{
+        @include btn;
+        margin: 10px 0;
+        height: 34px;
+        width: 100%;
+        padding: 0 10px;
+        cursor: pointer;
+    }
+}

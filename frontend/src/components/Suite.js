@@ -4,9 +4,13 @@ import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import imgsuite1 from './assets/media/suiteparentale1.webp';
 import imgsuite2 from './assets/media/suiteparentale2.webp';
 import imgsuite3 from './assets/media/suiteparentale3.webp';
+import imgsuite4 from './assets/media/suiteparentale4.webp';
+import imgsuite5 from './assets/media/suiteparentale.webp';
 import imgsuiteMobile1 from './assets/media-mobile/suiteparentale1Mobile.webp';
 import imgsuiteMobile2 from './assets/media-mobile/suiteparentale2Mobile.webp';
 import imgsuiteMobile3 from './assets/media-mobile/suiteparentale3Mobile.webp';
+import imgsuiteMobile4 from './assets/media-mobile/suiteparentale4Mobile.webp';
+import imgsuiteMobile5 from './assets/media-mobile/suiteparentaleMobile.webp';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
@@ -53,7 +57,29 @@ function Suite() {
                             srcSet={`${imgsuite3} 768w,${imgsuiteMobile3} 480w`}
                             syzes="(max-width: 600px) 480px, 768px"
                             src={imgsuite3}
-                            alt="suite-pictures-1"
+                            alt="suite-pictures-3"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className='img-gite'
+                            height="432"
+                            width="768"
+                            srcSet={`${imgsuite4} 768w,${imgsuiteMobile4} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
+                            src={imgsuite4}
+                            alt="suite-pictures-4"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className='img-gite'
+                            height="432"
+                            width="768"
+                            srcSet={`${imgsuite5} 768w,${imgsuiteMobile5} 480w`}
+                            syzes="(max-width: 600px) 480px, 768px"
+                            src={imgsuite5}
+                            alt="suite-pictures-5"
                         />
                     </div>
                 </Carousel>

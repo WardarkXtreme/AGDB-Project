@@ -54,6 +54,8 @@
         flex-direction: column;
         width: 80%;
         align-items: center;
+        min-height: 300px;
+        justify-content: space-around;
         .nameForm{
             display: flex;
             width: 100%;
@@ -64,15 +66,16 @@
             width: 100%;
             border: none;
             border-bottom: 1px solid #BC8212;
-            margin: 15px 0;
+            margin: 8px 0;
+            color: lightgray;
             height: 30px;
             font-size: 24px;
             background: transparent;
         }
         .pForm{
             font-size: 16px;
-            margin: 3px 0 0 0;
-            color: white;
+            margin: 5px 0;
+            color: lightgray;
         }
         .nbrForm{
             display: flex;
@@ -83,6 +86,8 @@
             color: rgb(145, 32, 32);
             font-size: 20px;
             background: rgba(255, 255, 255, 0.49);
+            padding: 5px;
+            border-radius: 11px;
         }
         .valid{
             color: green;
@@ -92,7 +97,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 12px 0;
+            margin: 5px 0;
         }
         .rangeFormValid{
             -webkit-appearance: none;
@@ -111,9 +116,8 @@
             width: 30px;
             border-radius: 50%;
             background: white;
-            border: 1px solid black;
             cursor: pointer;
-            box-shadow: -415px 0 0 400px lightgreen;
+            box-shadow: -415px 0 0 400px #678f35;
         }
         .rangeFormNotValid{
             -webkit-appearance: none;
@@ -131,18 +135,18 @@
             width: 30px;
             border-radius: 50%;
             background: white;
-            border: 1px solid black;
             cursor: pointer;
-            box-shadow: -415px 0 0 400px lightcoral;
+            box-shadow: -415px 0 0 400px rgb(137, 0, 0);
         }
         .react-calendar{
             border: 1px solid #BC8212;
             width: 100%;
         }
         .react-calendar__tile--active {
-            background: lightgreen;
+            background: transparent;
             color: black;
-            box-shadow: inset 0 0 5px black;
+            box-shadow: inset 0 0 5px #BC8212;
+            border-radius: 50%;
         }
         .rplDate{
             display: flex;
@@ -164,6 +168,7 @@
         }
     }
 }
+
 .send-true, .send-false{
     display: flex;
     justify-content: center;
@@ -173,17 +178,14 @@
     color: black;
     border-radius: 2em;
     font-size: 14px;
-    margin: 30px 0;
+    margin: 0 0 20px 0;
 }
 .send-false{
     border: none;
     background-color: lightgray;
 }
 .send-true{
-    border: 2px solid #BC8212;
-    background-color: white;
-    filter: drop-shadow(2px 2px 4px black);
-    cursor: pointer;
+    @include btn;
 }
 .connexionForm{
     display: flex;
@@ -200,22 +202,41 @@
     box-shadow: 0 0 15px grey;
     margin: 10px 0;
 }
-.Ball{
+.Ball, .Ball-er{
     animation: turn linear 1.5s forwards;
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 120px;
     height: 120px;
-    border: 4px solid;
+    border: 3px solid darkgrey;
     border-radius: 50%;
-    border-bottom: 1px solid grey;
-    box-shadow: 0px 6px 12px;
-    .ico-ball{
+    .ico-ball, .ico-ball-er{
         display: flex;
-        width: 100%;
-        height: 100%;
-        color: aliceblue;
+        height: 80%;
     }
 }
-.p-ball{
-    color: aliceblue;
+.Ball{
+    border-bottom: 1px solid #678f35;
+    box-shadow: 0px 6px 12px darkolivegreen;
+}
+.Ball-er{
+    border-bottom: 1px solid rgb(137, 0, 0);
+    box-shadow: 0px 6px 12px rgb(137, 0, 0);
+}
+.ico-ball{
+    color: #678f35;
+}
+.ico-ball-er{
+    color: rgb(137, 0, 0);
+}
+.p-ball, .p-ball-er{
+    color: darkgray;
+}
+.num{
+    color: #BC8212;
+    font-weight: 600;
+}
+.nos-valeur{
+    @include card;
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Axios from 'axios'
+import Axios from 'axios';
+import Valid from './Valid';
+import NoValid from './NoValid';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function Reservation() {
 
@@ -16,18 +16,15 @@ function Reservation() {
   const [valueRangeAdult, setValueRangeAdult] = useState(2);
   const [valueRangeChild, setValueRangeChild] = useState(0);
   const [valueError, setValueError] = useState(false);
-
   const [lastName, setlastName] = useState("");
   const [firstName, setfirstName] = useState("");
   const [mail, setMail] = useState("");
   const [message, setMessage] = useState("");
   const [readySend, setReadySend] = useState(false);
-  console.log(readySend);
   const regExLastName = /^(([a-zA-Z-]{3,10}))$/;
   const regExFirstName = /^(([a-zA-Z-]{3,10}))$/;
-  const regExMail = /^(([a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
+  const regExMail = /^(([a-zA-Z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
   const regExMessage = /^(([a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-']{40,150}))$/;
-
   const verifyLastName = regExLastName.test(lastName);
   const verifyFirstName = regExFirstName.test(firstName);
   const verifyMail = regExMail.test(mail);
@@ -97,17 +94,18 @@ function Reservation() {
     } else {
       setValueError(true)
     }
-
-    console.log(getValue)
-    console.log(valueRangePeople)
   }, [valueRangeAdult, valueRangeChild, valueRangePeople])
 
-  useEffect(() => {
+  const verifyPostMail = () => {
     if (verifyLastName && verifyFirstName && verifyMail && valueError === false && valueStart !== undefined && verifyMessage) {
       setReadySend(true)
     } else {
       setReadySend(false)
     }
+  }
+
+  useEffect(() => {
+    verifyPostMail();
 
   }, [lastName, firstName, mail, valueError, valueStart, message])
 
@@ -131,7 +129,7 @@ function Reservation() {
         headers: {
           'Content-Type': 'application/json'
         },
-        url: "http://localhost:3000/api/contact/",
+        url: "https://www.augitedubois.com/api/contact/",
         mode: 'cors',
         data: data
       })
@@ -139,18 +137,22 @@ function Reservation() {
           setValid(true)
           setAnim(!anim)
           setTimeout(() => {
-              window.location.reload()
-          }, 6000);
+            document.getElementById('Reservation').scrollIntoView()
+          }, 1500);
+          setTimeout(() => {
+            window.location.reload()
+          }, 8000);
         })
         .catch(error => {
           setValid(false)
           setAnim(!anim)
           setTimeout(() => {
+            document.getElementById('Reservation').scrollIntoView()
+          }, 1500);
+          setTimeout(() => {
               window.location.reload()
-          }, 6000);
+          }, 8000);
         })
-    } else {
-      console.log('rien')
     }
   }
   return (
@@ -159,11 +161,11 @@ function Reservation() {
       {!displayForm ? 
         <div>
           <p className='textSubtitle'>
-            Vous Pouvez réserver vos vacances Au Gite Du Bois directement en nous contactant 
+            Vous pouvez réserver vos vacances Au Gîte Du Bois en nous contactant 
             via le formulaire de réservation, nous vous répondrons au plus vite.  
           </p>
           <div className='group-reservation-btn'>
-            <button className="reservation-btn" onClick={()=> {setDisplayForm(!displayForm)}}>formulaire</button>
+            <button className="reservation-btn" onClick={()=> {setDisplayForm(!displayForm)}}>Formulaire</button>
             <p className='textSubtitle'>
               Si vous préférez prendre une réservation en ligne dès maintenant nous vous invitons 
               à vous diriger sur les liens des plateformes ci-dessous.   
@@ -189,21 +191,21 @@ function Reservation() {
                 <label className='nbrForm'>
                   <p className='pForm'>Nombre de personnes :</p>
                   <div className='rangeGroup'>
-                    <p className='pForm'>{valueRangePeople}</p>
+                    <p className='num'>{valueRangePeople}</p>
                     <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangePeople} onChange={(e) => { setValueRangePeople(e.target.value) }} />
                   </div>
                 </label>
                 <label className='nbrForm'>
                   <p className='pForm'>Nombre d'adultes :</p>
                   <div className='rangeGroup'>
-                    <p className='pForm'>{valueRangeAdult}</p>
+                    <p className='num'>{valueRangeAdult}</p>
                     <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='2' max='14' defaultValue={valueRangeAdult} onChange={(e) => { setValueRangeAdult(e.target.value) }} />
                   </div>
                 </label>
                 <label className='nbrForm'>
                   <p className='pForm'>Nombre d'enfants :</p>
                   <div className='rangeGroup'>
-                    <p className='pForm'>{valueRangeChild}</p>
+                    <p className='num'>{valueRangeChild}</p>
                     <input className={`rangeFormValid ${valueError ? "rangeFormNotValid" : ""}`} type='range' min='0' max='14' defaultValue={valueRangeChild} onChange={(e) => { setValueRangeChild(e.target.value) }} />
                   </div>
                 </label>
@@ -216,8 +218,8 @@ function Reservation() {
                 <Calendar selectRange={true} minDate={dateStart} defaultValue={dateStart} onChange={setValueStart} />
                 {valueStart.length > 0 ?
                   <div className="rplDate">
-                    <p>Du {`${valueStart[0].toLocaleDateString()}`}</p>
-                    <p>Au {`${valueStart[1].toLocaleDateString()}`}</p>
+                    <p className='pForm'>Du <span className='num'>{`${valueStart[0].toLocaleDateString()}`}</span></p>
+                    <p className='pForm'>Au <span className='num'>{`${valueStart[1].toLocaleDateString()}`}</span></p>
                   </div>
                   :
                   null
@@ -226,7 +228,7 @@ function Reservation() {
                   <p className='pForm'>Message :</p>
                   <textarea className='messageFormIn' onChange={handleMessage} />
                   {message.length <= 39 ?
-                    <p className='rangeError'>{message.length}/40 caracteres minimum attendus</p>
+                    <p className='rangeError'>{message.length}/40 caractères minimums attendus</p>
                     :
                     null
                   }
@@ -241,21 +243,9 @@ function Reservation() {
           :
             <>              
               {valid === true ? 
-                  <>
-                      <div className='Ball'>
-                          <FontAwesomeIcon icon={faCheck} className='ico-ball'/>
-                      </div>
-                      <p className='p-ball'>Votre demande est envoyé</p>
-                      <p className='p-ball'>Veuillez attendre la redirection automatique</p>
-                  </>
+                <Valid />
               :
-                  <>
-                      <div className='Ball'>
-                          <FontAwesomeIcon icon={faXmark} className='ico-ball'/>
-                      </div>
-                      <p className='p-ball'>Erreur innatendue, veuillez rééssayer</p>
-                      <p className='p-ball'>Veuillez attendre la redirection automatique</p>
-                  </>
+                <NoValid />
               }
             </>
           }

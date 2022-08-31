@@ -13,7 +13,7 @@ function Tarif() {
         <section id='Tarifs' className='tarif-gite'>
             <div className='headTarif'>
                 <h2 className='subtitle'>Tarifs</h2>
-                <p className='textSubtitle'>De nombreuses options de réservation sont mises en place pour vous accueillir selons vos possibilités</p>
+                <p className='textSubtitle'>De nombreuses options de réservation sont mises en place pour vous accueillir selon vos possibilités</p>
             </div>
             <div className='tableTarif'>
                 <table>
@@ -67,9 +67,9 @@ function Tarif() {
                     <ul>
                         <li className="liGite">Les prix s'entendent pour la location du gîte entier</li>
                         <li className="liGite">Un acompte de 25% sera demandé lors de la réservation</li>
-                        <li className="liGite">Un dépôt de garantie de 900€ vous sera demandé à l'arrivée, et restitué lors de l’état des lieux de sortie.</li>
+                        <li className="liGite">Un dépôt de garantie de 1500€ vous sera demandé à l'arrivée, et restitué lors de l’état des lieux de sortie.</li>
                         <li className="liGite">Taxes de séjour non incluses au tarif de 1.16 € par personne et par nuit</li>
-                        <li className="liGite">Les animaux ne sont pas autorisés.</li>
+                        <li className="liGite">Les animaux ne sont pas autorisés</li>
                     </ul>
                     <h3>Heure d'arrivée : <span className='pHeure'>15 h 00</span></h3>
                     <h3>Heure de départ : <span className='pHeure'>10 h 00</span></h3>
@@ -80,15 +80,15 @@ function Tarif() {
                         <li className="liGite">WiFi gratuit</li>
                         <li className="liGite">Linge de maison fourni (draps, serviettes)</li>
                         <li className="liGite">Quatre chambres et un dortoir de quatre couchages</li>
-                        <li className="liGite">BBQ et équipements de plein air (pétanque, Molki, hamac...)</li>
+                        <li className="liGite">barbecue et équipements de plein air (pétanque, molki, hamac...)</li>
                         <li className="liGite">Jeux et jouets pour enfants</li>
                         <li className="liGite">Produits ménagers</li>
                         <li className="liGite">Ménage de fin de séjour</li>
+                        <li className="liGite">Lit bébé (0-2 ans) disponible gratuitement</li>
                     </ul>
                     <h3>Services optionnels</h3>
                     <ul>
-                        <li className="liGite">Relaxation et massage bien être peut être envisagé, réalisé par Myriam Bierjon-Gerbaud (membre F.F.M.T.R.)</li>
-                        <li className="liGite">Lit bébé (0-2 ans) disponible gratuitement</li>
+                        <li className="liGite">Relaxation et massage bien-être peuvent être envisagés, réalisés par Myriam Bierjon-Gerbaud (membre F.F.M.T.R.)</li>
                     </ul>
                 </div>
                 <div className='informationGite'>

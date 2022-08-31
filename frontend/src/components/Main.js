@@ -9,7 +9,6 @@ function Main() {
         setWinSize(window.innerWidth)
     },[])
     let size = winSize;
-    console.log(size)
     return (
         <section className='header-vids'>
             <h1 className='titleName'>Au Gîte Du Bois</h1>
@@ -17,7 +16,7 @@ function Main() {
                 <p className='tp'>
                     Réservez vos vacances dans un gîte quatre étoiles
                     au coeur de nombreuses destinations touristiques.
-                    Un lieu remplie de charme, calme et reposant.
+                    Un lieu rempli de charme, calme et reposant.
                     Entre mer et verdure, les amateurs d'escapades bucoliques,
                     seront sensibles au style moderne et à l'ambiance conviviale revendiquée.
                 </p>

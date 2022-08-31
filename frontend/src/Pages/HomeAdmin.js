@@ -1,8 +1,9 @@
 import React from "react";
 import Privilege from '../components/Privilege';
+import { SecureA } from '../components/SecureA';
 
-
-const HomeAdmin = () => {
+function HomeAdmin(){
+    SecureA();
     return (
         <>  
             <main>

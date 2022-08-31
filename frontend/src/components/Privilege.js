@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import logo from '../img/logo-gitedubois.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faPowerOff, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Valid from '../components/Valid';
+import NoValid from '../components/NoValid';
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { RatingStar } from "rating-star";
 
 function Privilege() {
-
     const [avis, setAvis] = useState([]);
     const [majDel, setMajDel] = useState([]);
     const [anim, setAnim] = useState(false);
@@ -64,7 +65,7 @@ function Privilege() {
     useEffect(() => {
         const getAvis = async (num) => {
             await Axios({
-                url: 'http://localhost:3000/api/avis/',
+                url: 'https://www.augitedubois.com/api/avis/',
                 mode: 'cors'
             }).then((result) => {
                 let array = result.data.slice(0, count)
@@ -86,6 +87,7 @@ function Privilege() {
 
     function submit(e) {
         e.preventDefault();
+        const jwt = sessionStorage.getItem('token')
         if (readySend === true) {
             const data = {
                 "email": mail,
@@ -95,9 +97,10 @@ function Privilege() {
             Axios({
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + jwt
                 },
-                url: "http://localhost:3000/api/auth/signup",
+                url: "https://www.augitedubois.com/api/auth/signup",
                 mode: 'cors',
                 data: data
             })
@@ -106,29 +109,30 @@ function Privilege() {
                     setAnim(!anim)
                     setTimeout(() => {
                         window.location.reload()
-                    }, 3000);
+                    }, 5000);
                 })
                 .catch(error => {
                     setValid(false)
                     setAnim(!anim)
                     setTimeout(() => {
                         window.location.reload()
-                    }, 3000);
+                    }, 5000);
                 })
         }
     }
     const deleteAvis = (e) => {
         let idAvis = e.target.id
-        console.log(idAvis)
+        const jwt = sessionStorage.getItem('token')
         const data = {
             "id": idAvis
         }
         Axios({
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + jwt
             },
-            url: "http://localhost:3000/api/avis/del",
+            url: "https://www.augitedubois.com/api/avis/del",
             mode: 'cors',
             data: data
         })
@@ -145,7 +149,7 @@ function Privilege() {
         <>
             <div className='header'>
                 <img src={logo} alt='logo Gite du bois' height='172' width='262' className='logo_1' />
-                <a href='/'><FontAwesomeIcon icon={faPowerOff} className='icoMenu' id='openMenu' /></a>
+                <a href='/'><FontAwesomeIcon icon={faPowerOff} className='icoMenu' id='openMenu' onClick={() => { sessionStorage.clear() }}/></a>
             </div>
             <div className='group-form_connexion'>
                 <div className='connexionForm'>
@@ -188,21 +192,9 @@ function Privilege() {
                         <>
                             
                             {valid === true ? 
-                                <>
-                                    <div className='Ball'>
-                                        <FontAwesomeIcon icon={faCheck} className='ico-ball'/>
-                                    </div>
-                                    <p className='p-ball'>Utilisateur créé avec succés</p>
-                                    <p className='p-ball'>Veuillez attendre la redirection automatique</p>
-                                </>
+                                <Valid />
                             :
-                                <>
-                                    <div className='Ball'>
-                                        <FontAwesomeIcon icon={faXmark} className='ico-ball'/>
-                                    </div>
-                                    <p className='p-ball'>Erreur innatendue, veuillez rééssayer</p>
-                                    <p className='p-ball'>Veuillez attendre la redirection automatique</p>
-                                </>
+                                <NoValid />
                             }
                                 
                         </>

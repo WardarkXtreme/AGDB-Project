@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const ctctCtrl = require('../controllers/contact.controller');
+const ctCtrl = require('../controllers/contact.controller');
+const ctMdlw = require('../middlewares/contact.middleware');
 
-router.post("/", ctctCtrl.sendContact);
+router.post("/", ctMdlw, ctCtrl.sendContact);
 
 module.exports = router;
