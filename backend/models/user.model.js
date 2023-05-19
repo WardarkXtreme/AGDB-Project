@@ -1,9 +1,13 @@
-const User = function (user) {
+const ModelUser = function (user) {
+
+    this.tel = user.tel;
+    this.mail = user.mail;
     this.name = user.name;
     this.lastName = user.lastName;
-    this.email = user.email;
+    this.nationality = user.nationality;
+    this.address = user.address;
+    this.privilege = user.privilege;
     this.password = user.password;
-    this.role = user.role;
+    this.dateInscription = user.dateInscription;
 };
-
-module.exports = User;
+module.exports = ModelUser;
