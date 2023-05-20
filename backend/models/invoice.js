@@ -1,19 +1,27 @@
+//***model facture
 const ModelInvoice = function (invoice) {
+    // info fac
     this.numberInvoiceInit = invoice.numberInvoiceInit;
     this.invoiceInit = invoice.invoiceInit;
+    // identity
 	this.name = invoice.name;
     this.lastName = invoice.lastName;
     this.mobile = invoice.mobile;
     this.email = invoice.email;
+    this.nationality = invoice.nationality;
+
     this.address = invoice.address;
     this.city = invoice.city;
     this.state = invoice.state;
     this.country = invoice.country;
     this.postalCode = invoice.postalCode;
 
+    // reservation
     this.dateStart = invoice.dateStart;
     this.dateEnd = invoice.dateEnd;
 
+    this.infoTarif = invoice.infoTarif;
+// 
     this.nbPeople = invoice.nbPeople;
     this.nbAdult = invoice.nbAdult;
     this.nbChild = invoice.nbChild;
@@ -23,25 +31,29 @@ const ModelInvoice = function (invoice) {
 
     this.priceNightNoWD = invoice.priceNightNoWD;
     this.priceNightWD = invoice.priceNightWD;
-
+    // valeur des taxe € ou %
     this.nightAdultTaxeValue = invoice.nightAdultTaxeValue;
     this.locationTaxeValue = invoice.locationTaxeValue;
     this.serviceTaxeValue = invoice.serviceTaxeValue;
+    // 
+    this.priceNightAdultTaxe = invoice.priceNightAdultTaxe;
+    this.priceServiceTaxe = invoice.priceServiceTaxe;
+    this.priceLocationTaxe = invoice.priceLocationTaxe;
 
     this.priceServiceTaxeValueHT = invoice.priceServiceTaxeValueHT;
     this.priceServiceTaxeValueTTC = invoice.priceServiceTaxeValueTTC;
-    this.priceServiceTaxe = invoice.priceServiceTaxe;
-
     this.priceLocationTaxeValueHT = invoice.priceLocationTaxeValueHT;
     this.priceLocationTaxeValueTTC = invoice.priceLocationTaxeValueTTC;
-    this.priceLocationTaxe = invoice.priceLocationTaxe;
+    
+    this.specialDiscountValue = invoice.specialDiscountValue;
+    
+    this.totalHTBeforeSpecialDiscount = invoice.totalHTBeforeSpecialDiscount;
+    this.totalHTAfterSpecialDiscount = invoice.totalHTAfterSpecialDiscount;
+    this.totalTTCBeforeSpecialDiscount = invoice.totalTTCBeforeSpecialDiscount;
+    this.totalTTCAfterSpecialDiscount = invoice.totalTTCAfterSpecialDiscount;
 
     this.totalHT = invoice.totalHT;
     this.totalTTC = invoice.totalTTC;
-
-    this.specialDiscountValue = invoice.specialDiscountValue;
-    this.totalTTCBeforeSpecialDiscount = invoice.totalBeforeSpecialDiscount;
-    this.totalTTCAfterSpecialDiscount = invoice.totalAfterSpecialDiscount;
 };
 
 module.exports = ModelInvoice;

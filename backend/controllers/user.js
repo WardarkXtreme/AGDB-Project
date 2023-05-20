@@ -1,10 +1,11 @@
+//***controlleur utilisateur */
 const dbConnect = require('../connect/Connect_db.js');
 
 require('dotenv').config();
 // const nodemailer = require('nodemailer');
 // const path = require('path');
 // const hbs = require('nodemailer-express-handlebars');
-const ModelUser = require('../models/user.model');
+const ModelUser = require('../models/user.model.js');
 // const { google } = require('googleapis');
 // const OAuth2 = google.auth.OAuth2;
 const bcrypt = require('bcrypt');
@@ -14,18 +15,22 @@ exports.signup = (req, res) => {
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
         const user = new ModelUser({
-            tel: req.body.tel,
+            mobile: req.body.mobile,
             mail: req.body.mail,
             name: req.body.name,
             lastName: req.body.lastName,
             nationality: req.body.nationality,
             address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            postalCode: req.body.postalCode,
             privilege: req.body.privilege,
             password: hash,
-            dateInscription: req.body.dateInscription,
+            init: req.body.init
         });
-        let sql = `INSERT INTO user (tel, mail, name, lastName, nationality, address, privilege, password, dateInscription) VALUES (?)`;
-        let values = [user.tel, user.mail, user.name, user.lastName, user.nationality, user.address, user.privilege, user.password, user.dateInscription];
+        let sql = `INSERT INTO user (mobile, mail, name, lastName, nationality, address, privilege, password, dateInscription) VALUES (?)`;
+        let values = [user.mobile, user.mail, user.name, user.lastName, user.nationality, user.address, user.privilege, user.password, user.dateInscription];
         dbConnect.query(sql, [values], function(err, data) {
             if(err) {
                 return res.status(400).json(console.log(err));

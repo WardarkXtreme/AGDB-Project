@@ -27,22 +27,22 @@ function Tarif() {
                     <tbody>
                         <tr>
                             <td className='table-one'>Haute saison</td>
-                            <td className='table-price'>430€/ Nuit</td>
-                            <td className='table-price'>495€/ Nuit</td>
+                            <td className='table-price'>470€/ Nuit</td>
+                            <td className='table-price'>535€/ Nuit</td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <td className='table-one'>Moyenne saison</td>
-                            <td className='table-price'>360€/ Nuit</td>
-                            <td className='table-price'>410€/ Nuit</td>
+                            <td className='table-price'>400€/ Nuit</td>
+                            <td className='table-price'>450€/ Nuit</td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr>
                             <td className='table-one'>Basse saison</td>
-                            <td className='table-price'>290€/ Nuit</td>
-                            <td className='table-price'>350€/ Nuit</td>
+                            <td className='table-price'>330€/ Nuit</td>
+                            <td className='table-price'>390€/ Nuit</td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,24 +51,24 @@ function Tarif() {
                 <div className={`displayNone ${cacheT ? "displayInfo" : "displayNone"}`}>
                     <h3>Haute saison :</h3>
                     <ul>
-                        <li className="liGite">du 1er Juillet au 31 Aout</li>
+                        <li className="liGite">Du 1er Juillet au 31 Aout</li>
                     </ul>
                     <h3>Moyenne saison :</h3>
                     <ul>
-                        <li className="liGite">du 1er Septembre au 31 Octobre</li>
-                        <li className="liGite">du 1er Mars au 31 Juin</li>
+                        <li className="liGite">Du 1er Septembre au 31 Octobre</li>
+                        <li className="liGite">Du 1er Mars au 30 Juin</li>
                         <li className="liGite">Vacances scolaires et jours fériés</li>
                     </ul>
                     <h3>Basse saison :</h3>
                     <ul>
-                        <li className="liGite">du 1er Novembre au 28 Février</li>
+                        <li className="liGite">Du 1er Novembre au 28 Février</li>
                     </ul>
                     <h3>À savoir :</h3>
                     <ul>
                         <li className="liGite">Les prix s'entendent pour la location du gîte entier</li>
                         <li className="liGite">Un acompte de 25% sera demandé lors de la réservation</li>
-                        <li className="liGite">Un dépôt de garantie de 1500€ vous sera demandé à l'arrivée, et restitué lors de l’état des lieux de sortie.</li>
-                        <li className="liGite">Taxes de séjour non incluses au tarif de 1.16 € par personne et par nuit</li>
+                        <li className="liGite">Un dépôt de garantie de 1800€ vous sera demandé à l'arrivée, et restitué lors de l’état des lieux de sortie.</li>
+                        <li className="liGite">Taxes de séjour non incluses au tarif de 1.65 € par personne et par nuit</li>
                         <li className="liGite">Les animaux ne sont pas autorisés</li>
                     </ul>
                     <h3>Heure d'arrivée : <span className='pHeure'>15 h 00</span></h3>

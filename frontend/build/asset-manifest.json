@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.8cacfb7a.css",
-    "main.js": "/static/js/main.a007c135.js",
+    "main.js": "/static/js/main.d7bfeaa6.js",
     "static/media/gitevideo1920hd.mp4": "/static/media/gitevideo1920hd.7460063597f290931e97.mp4",
     "static/media/gitevideo720hd.mp4": "/static/media/gitevideo720hd.1add41b253fd83a0e801.mp4",
     "static/media/karting.webp": "/static/media/karting.395fae62a3d6731e4b1f.webp",
@@ -73,6 +73,6 @@
   },
   "entrypoints": [
     "static/css/main.8cacfb7a.css",
-    "static/js/main.a007c135.js"
+    "static/js/main.d7bfeaa6.js"
   ]
 }

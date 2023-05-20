@@ -1,6 +1,7 @@
+//***route utilisateurs
 const express = require("express");
 const router = express.Router();
-const userCtrl = require("../controllers/user.controller");
+const userCtrl = require("../controllers/user");
 // const authPrivilege = require('../middlewares/admin.middleware');
 // const auth = require('../middlewares/user.middleware');
 

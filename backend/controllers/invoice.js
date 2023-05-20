@@ -1,3 +1,4 @@
+//***controlleur utilisateur */
 const ModelInvoice = require('../models/invoice');
 const dbConnect = require('../connect/Connect_db.js');
 require('dotenv').config();
@@ -9,57 +10,107 @@ exports.invoice = (req, res, err) => {
     
     function generateHeader(doc) {
        
-        doc.image('./invoice/utils/logo.png', 50, 50, { width: 70 })
+        doc.image('./invoice/utils/logo.png', 50, 30, { width: 110 })
             .fillColor('#444444')
             
-            .fontSize(20)
-            .text('Au Gite Du Bois', 100, 50, { align: 'right' })
+            .fontSize(16)
+            .text('Au Gite Du Bois', 150, 50, { align: 'right' })
 
-            .fontSize(18)
-            .text('Client', 50, 140, { align: 'left', underline: true })
-            .text('Réservation', 50, 235, { align: 'left', underline: true })
-            .text('Détails', 50, 385, { align: 'left', underline: true })            
+            .fontSize(13)
+            .text('Client :', 50, 120, { align: 'left', underline: true })
+            .text('Réservation :', 330, 225, { align: 'left', underline: true })
+            .text('Détails :', 50, 225, { align: 'left', underline: true })  
+            .text('Adresse de facturation:', 330, 120, { align: 'left', underline: true })  
+            .fontSize(10)
             // Invoice Information invoice PDF
-            .text(`${"Facture numéro :" + "  " + req.body.numberInvoice}`, 180, 85, { align: 'right' })
-            .text(`${"fait le :" + "  " + req.body.dateInit}`, 180, 100, { align: 'right' })
-            .text(`${"total payé :" + "  " + req.body.totalPaid + ' €'}`, 180, 100, { align: 'right' })
+            .text(`${"Facture numéro :" + "  " + req.body.numberInvoice}`, 180, 70, { align: 'right' })
+            .text(`${"fait le :" + "  " + req.body.dateInvoiceInit}`, 180, 83, { align: 'right' })
 
             // Identity Information invoice PDF
-            .fontSize(10)
-            .text(`${"Prénom : " + "  " + req.body.name}`, 50, 170, { align: 'left' })
-            .text(`${"Nom de famille :" + "  " + req.body.lastName}`, 50, 185, { align: 'left' })
-            .text(`${"Numéro Tel :" + "  " + req.body.mobile}`, 50, 200, { align: 'left' })
-            .text(`${"@mail :" + "  " + req.body.email}`, 250, 170, { align: 'left' })
-            .text(`${"Addresse :" + "  " + req.body.address}`,250, 185, { align: 'left' })
-            .text(`${"Ville :" + "  " + req.body.city}`, 250, 200, { align: 'left' })
-            .text(`${"state :" + "  " + req.body.state}`, 430, 170, { align: 'left' })
-            .text(`${"country :" + "  " + req.body.country}`, 430, 185, { align: 'left' })
-            .text(`${"Code postal :" + "  " + req.body.postalCode}`, 430, 200, { align: 'left' })
+            .text(`${req.body.name}`, 50, 135, { align: 'left' })
+            .text(`${req.body.lastName}`, 50, 150, { align: 'left' })
+            .text(`${req.body.mobile}`, 50, 165, { align: 'left' })
+            .text(`${req.body.email}`, 50, 180, { align: 'left' })
+            .text(`${"Nationalité :" + "  " + req.body.nationality}`,50, 195, { align: 'left' })
+            
+            .text(`${req.body.address}`,330, 135, { align: 'left' })
+            .text(`${req.body.city}`, 330, 150, { align: 'left' })
+            .text(`${req.body.state}`, 330, 165, { align: 'left' })
+            .text(`${req.body.country}`, 330, 180, { align: 'left' })
+            .text(`${req.body.postalCode}`, 330, 195, { align: 'left' })
             // Reservation Information Infoice PDF
-            .text(`${"Arrivée :" + "  " + req.body.dateStart}`, 50, 265, {width: '200', align: 'justify', underline: true })
-            .text(`${"Départ :" + "  " + req.body.dateEnd}`, 50, 280, {width: '200', align: 'justify', underline: true })
-            .text(`${"Nombre de personne" + "  " + req.body.nbPeople}`, 50, 295, {width: '200', align: 'justify' })
-            .text(`${"Nombre d'adulte :" + "  " + req.body.nbAdult}`, 50, 310, {width: '200', align: 'justify' })
-            .text(`${"Nombre d'enfant :" + "  " + req.body.nbChild}`, 50, 325, {width: '200', align: 'justify' })
-            .text(`${"Nombre de nuits hors week-end :" + "  " + req.body.nbNightNoWD}`, 50, 340, {width: '200', align: 'justify' })
-            .text(`${"Nombre de nuits en week-end :" + "  " + req.body.nbNightWD}`, 50, 355, {width: '200', align: 'justify' })
-            .text(`${"Tarif nuitée hors week-end :" + "  " + req.body.priceNightNoWD + ' €'}`, 50, 265, { align: 'right' })
-            .text(`${"Tarif nuitée en week-end      :" + "  " + req.body.priceNightWD + ' €'}`, 50, 280, { align: 'right' })
+            .text(`${"Arrivée :" + "  " + req.body.dateStart}`, 330, 240, { align: 'left' })
+            .text(`${"Départ :" + "  " + req.body.dateEnd}`, 330, 260, { align: 'left' })
+            
+            .text(`${"Nombre de personne" + "  " + req.body.nbPeople}`, 330, 280, { align: 'left' })
+            .text(`${"Nombre d'adulte :" + "  " + req.body.nbAdult}`, 330, 300, { align: 'left' })
+            .text(`${"Nombre d'enfant :" + "  " + req.body.nbChild}`, 330, 320, { align: 'left' })
+            
+            .text(`${"Nombre de nuits hors week-end :" + "  " + req.body.nbNightNoWD}`, 330, 340, { align: 'left' })
+            .text(`${"Nombre de nuits en week-end :" + "  " + req.body.nbNightWD}`, 330, 360, { align: 'left' })
+            
+            .text(`${"Groupe tarifaire:" + "  " + req.body.infoTarif}`, 50, 240, { align: 'left' })
+            .text(`${"Tarif nuitée hors week-end :" + "  " + req.body.priceNightNoWD + ' €'}`,  50, 260, { align: 'left' })
+            .text(`${"Tarif nuitée en week-end :" + "  " + req.body.priceNightWD + ' €'}`, 50, 280, { align: 'left' })
             // Taxe Information Invoi29e PDF
-            .text(`${"Taxe de séjour par nuit et par adulte :" + "  " + req.body.taxeVisitoryByNightByAdult + ' €'}`, 50, 415, { align: 'left' })
-            .text(`${"Taux TVA prestations :" + "  " + req.body.serviceTaxeValue + ' %'}`, 50, 430, { align: 'left' })
-            .text(`${"Taux TVA location:" + "  " + req.body.taxeValue + ' %'}`, 50, 445, { align: 'left' })
+            .text(`${"Taxe de séjour par nuit et par adulte :" + "  " + req.body.nightAdultTaxeValue + ' €'}`, 50, 300, { align: 'left' })
+            .text(`${"Taux TVA location:" + "  " + req.body.locationTaxeValue + ' %'}`, 50, 320, { align: 'left' })
+            .text(`${"Taux TVA prestations :" + "  " + req.body.serviceTaxeValue + ' %'}`, 50, 340, { align: 'left' })
+            
+            .text(`${"Montant taxe de séjour :" + "  " + req.body.priceNightAdultTaxe + ' €'}`, 50, 360, { align: 'left' })
+            .text(`${"Montant taxes prestation :" + "  " + req.body.priceServiceTaxe + ' €'}`, 50, 380, { align: 'left' })
+            .text(`${"Montant taxes location :" + "  " + req.body.priceLocationTaxe + ' €'}`, 50, 400, { align: 'left' })
             // Paided Info Invoice PDF
-            .text(`${"Montant prestation HT:" + "  " + req.body.priceServiceTaxeValueHT + ' €'}`, 50, 340, { align: 'right' })
-            .text(`${"Montant prestation TTC:" + "  " + req.body.priceServiceTaxeValueTTC + ' €'}`, 50, 355, { align: 'right' })
-            .text(`${"Total HT :" + "  " + req.body.totalHT + ' €'}`, 180, 390, { align: 'right' })
-            .text(`${"Montant TVA location :" + "  " + req.body.priceTaxeValue + ' €'}`, 180, 80, { align: 'right' })
-            .text(`${"Montant TVA services :" + "  " + req.body.priceTaxeVisitoryByAdultByNight + ' €'}`, 180, 80, { align: 'right' })
-            .text(`${"Total TTC :" + "  " + req.body.totalPaid + ' €'}`, 180, 80, { align: 'right' })
-            .text(`${"Offre exeptionnelle :" + "  " + req.body.specialDiscount + ' %'}`, 180, 80, { align: 'right' })
-            .text(`${"Total TTC aprés remise :" + "  " + req.body.totalBeforeSpecialDiscount + ' €'}`, 180, 80, { align: 'right' })
+            .text(`${"Montant prestation HT:" + "  " + req.body.priceServiceTaxeValueHT + ' €'}`, 50, 420, { align: 'left' })
+            .text(`${"Montant prestation TTC:" + "  " + req.body.priceServiceTaxeValueTTC + ' €'}`, 50, 440, { align: 'left' })
+            .text(`${"Montant location HT:" + "  " + req.body.priceLocationTaxeValueHT + ' €'}`, 50, 460, { align: 'left' })
+            .text(`${"Montant location TTC:" + "  " + req.body.priceLocationTaxeValueTTC + ' €'}`, 50, 480, { align: 'left' })
+            
+            .text(`${"Offre exeptionnelle :" + "  " + req.body.specialDiscountValue + ' %'}`, 50, 500, { align: 'left' })
+
+            .text(`${"Total HT avant remise :" + "  " + req.totalHTBeforeSpecialDiscount + ' €'}`, 50, 520, { align: 'left' })
+            .text(`${"Total HT aprés remise :" + "  " + req.body.totalHTAfterSpecialDiscount + ' €'}`, 50, 540, { align: 'left' })
+            .text(`${"Total TTC avant remise :" + "  " + req.body.totalTTCBeforeSpecialDiscount + ' €'}`, 50, 560, { align: 'left' })
+            .text(`${"Total TTC aprés remise :" + "  " + req.body.totalTTCAfterSpecialDiscount + ' €'}`, 50, 580, { align: 'left' })
+            
+            .text(`${"Total HT :" + "  " + req.body.totalHT + ' €'}`, 50, 600, { align: 'left' })
+            .text(`${"Total TTC :" + "  " + req.body.totalTTC + ' €'}`, 50, 620, { align: 'left' })
                 
            
+        }
+    function generateFooter(doc) {
+        doc.fontSize(8)
+        .text('Payment is due within 15 days. Thank you for your business.', 50, 750-75, { align: 'center', width: 500 },)
+        .text('4, rue Le Petit Andillou 50300 PONTS', 50, 750-60, { align: 'center' })
+        .text('06.01.02.85.35', 50, 750-45, { align: 'center' })
+        .text('contact@augitedubois.com', 50, 750-30, { align: 'center' })
+        .text('n° SIRET : 480 580 158 00024.', 50, 750-15, { align: 'center' })
+        .text('N.I.E(TVA) - FR95480580158', 50, 750, { align: 'center' })
+        .moveDown()
+        ;
+
+        ;
+    }
+    function createInvoice(invoice, path) {
+        let doc = new PDFDocument({ size: 'A4' });
+    
+        generateHeader(doc); 
+        generateFooter(doc); 
+        doc.end();
+        doc.pipe(fs.createWriteStream(path));
+    }
+    
+    let generateName = Math.floor(Math.random() * 2)
+    let convName = generateName.toString()
+    createInvoice(req, `${'./invoice/'+convName + req.body.name + ".pdf"}`)
+    if(err) {
+        console.log(err)
+        return res.status(400).json({err});
+        
+    }
+    else{
+        return res.status(200).json({message: "envoyé avec succés !"})
+    }  
             // const invoiceRemodel = new ModelInvoice({
             //  
             //     taxeInformation: {
@@ -75,39 +126,6 @@ exports.invoice = (req, res, err) => {
             //          totalPaid: req.body.totalPaid,
             //     }
             // });
-            .moveDown()
-            ;
-        }
-    function generateFooter(doc) {
-        doc.fontSize(
-            10,
-        ).text(
-            'Payment is due within 15 days. Thank you for your business.',
-            50,
-            780,
-            { align: 'center', width: 500 },
-        );
-    }
-    function createInvoice(invoice, path) {
-        let doc = new PDFDocument({ size: 'A4' });
-    
-        generateHeader(doc); 
-        generateFooter(doc); 
-        doc.end();
-        doc.pipe(fs.createWriteStream(path));
-    }
-    
-    let generateName = Math.floor(Math.random() * 2)
-    let convName = generateName.toString()
-    createInvoice(req, `${'./invoice/'+convName+ ".pdf"}`)
-    if(err) {
-        console.log(err)
-        return res.status(400).json({err});
-        
-    }
-    else{
-        return res.status(200).json({message: "envoyé avec succés !"})
-    }  
     
 };
 
