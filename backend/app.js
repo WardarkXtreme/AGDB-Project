@@ -3,8 +3,8 @@ require('./connect/Connect_db.js');
 const bodyParser = require('body-parser');
 const { urlencoded } = require('body-parser');
 require('dotenv').config();
-const userRoutes = require('./route/user.js');
-const invoiceRoutes = require('./route/invoice.js');
+const route_user = require('./route/user.js');
+const route_invoice = require('./route/invoice.js');
 const app = express();
 
 // const avisRoutes = require('./routes/avis.routes');
@@ -21,8 +21,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(urlencoded({ extended: true}));
 
-app.use("/api/auth", userRoutes);
-app.use("/api/auth/post", invoiceRoutes);
+app.use("/api/auth", route_user);
+app.use("/api/auth/post", route_invoice);
 
 
 // app.use("/api/contact", ctctRoutes);

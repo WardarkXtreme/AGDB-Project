@@ -1,19 +1,23 @@
 //***controlleur utilisateur */
 const dbConnect = require('../connect/Connect_db.js');
-
+const path = require('path');
 require('dotenv').config();
+
+
+const ModelUser = require('../models/user.js');
+const bcrypt = require('bcrypt');
+
 // const nodemailer = require('nodemailer');
-// const path = require('path');
 // const hbs = require('nodemailer-express-handlebars');
-const ModelUser = require('../models/user.model.js');
 // const { google } = require('googleapis');
 // const OAuth2 = google.auth.OAuth2;
-const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res) => {
+    
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
+        
         const user = new ModelUser({
             mobile: req.body.mobile,
             mail: req.body.mail,
@@ -27,15 +31,15 @@ exports.signup = (req, res) => {
             postalCode: req.body.postalCode,
             privilege: req.body.privilege,
             password: hash,
-            init: req.body.init
+            init: new Date().toISOString().split("T")[0]
         });
-        let sql = `INSERT INTO user (mobile, mail, name, lastName, nationality, address, privilege, password, dateInscription) VALUES (?)`;
-        let values = [user.mobile, user.mail, user.name, user.lastName, user.nationality, user.address, user.privilege, user.password, user.dateInscription];
+        let sql = `INSERT INTO user (mobile, mail, name, lastName, nationality, address, city, state, country, postalCode, privilege, password, init) VALUES (?)`;
+        let values = [user.mobile, user.mail, user.name, user.lastName, user.nationality, user.address, user.city, user.state, user.country, user.postalCode, user.privilege, user.password, user.init];
         dbConnect.query(sql, [values], function(err, data) {
             if(err) {
                 return res.status(400).json(console.log(err));
             }
-            res.status(200).json({message: "inscription réalisée avec succés !"});
+            res.status(201).json({message: "inscription réalisée avec succés !"});
         });
     })
     .catch(error => res.status(500).json(console.log(error)));

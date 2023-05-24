@@ -1,7 +1,7 @@
 //***model utilisateur
 const ModelUser = function (user) {
    
-    this.tel = user.tel;
+    this.mobile = user.mobile;
     this.mail = user.mail;
     this.name = user.name;
     this.lastName = user.lastName;
@@ -14,5 +14,6 @@ const ModelUser = function (user) {
     this.privilege = user.privilege;
     this.password = user.password;
     this.init = user.init;
+    
 };
 module.exports = ModelUser;

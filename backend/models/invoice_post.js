@@ -1,9 +1,16 @@
 //***model facture
 const ModelInvoice = function (invoice) {
+
     // info fac
     this.numberInvoiceInit = invoice.numberInvoiceInit;
-    this.invoiceInit = invoice.invoiceInit;
     // identity
+    this.user_id = invoice.user_id;
+    this.price = invoice.price;
+    this.link_invoice = invoice.link_invoice;
+    this.date_init = invoice.date_init;
+
+
+
 	this.name = invoice.name;
     this.lastName = invoice.lastName;
     this.mobile = invoice.mobile;
@@ -53,7 +60,7 @@ const ModelInvoice = function (invoice) {
     this.totalTTCAfterSpecialDiscount = invoice.totalTTCAfterSpecialDiscount;
 
     this.totalHT = invoice.totalHT;
-    this.totalTTC = invoice.totalTTC;
+    this.total_ttc = invoice.total_ttc;
 };
 
 module.exports = ModelInvoice;
