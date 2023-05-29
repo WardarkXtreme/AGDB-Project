@@ -1,0 +1,106 @@
+{
+
+    "body" : [{
+    
+        "date_init": "",
+        "user_id": "",
+        "link_invoice": "",
+    
+        "numberInvoice": "",
+        "name": "",
+        "lastName": "",
+        "mobile": "",
+        "email": "",
+        "nationality": "",
+    
+        "address": "",
+        "city": "",
+        "state": "",
+        "country": "",
+        "postalCode": "",
+    
+        "dateStart": "",
+        "dateEnd": "",
+    
+        "nbPeople": "",
+        "nbAdult": "",
+        "nbChild": "",
+    
+        "total_nb_night": 0,
+        "total_nb_night_off": 0,
+        "total_nb_night_no_wd_low_saison": 0,
+        "total_nb_night_wd_low_saison": 0,
+        "total_nb_night_no_wd_middle_saison": 0,
+        "total_nb_night_wd_middle_saison": 0,
+        "total_nb_night_no_wd_hight_saison": 0,
+        "total_nb_night_wd_hight_saison": 0,
+
+
+        "info_tarif_night_off": 0,
+        "info_tarif_night_no_wd_low_saison": 0,
+        "info_tarif_night_wd_low_saison": 0,
+        "info_tarif_night_no_wd_middle_saison": 0,
+        "info_tarif_night_wd_middle_saison": 0,
+        "info_tarif_night_no_wd_hight_saison": 0,
+        "info_tarif_night_wd_hight_saison": 0,
+    
+         
+        "info_tarif_night_off_ht": 0,
+        "info_tarif_night_no_wd_low_saison_ht": 0,
+        "info_tarif_night_wd_low_saison_ht": 0,
+        "info_tarif_night_no_wd_middle_saison_ht": 0,
+        "info_tarif_night_wd_middle_saison_ht": 0,
+        "info_tarif_night_no_wd_hight_saison_ht": 0,
+        "info_tarif_night_wd_hight_saison_ht": 0,
+    
+       
+        "price_night_off_ttc": 0,
+        "price_night_no_wd_low_saison_ttc": 0,
+        "price_night_wd_low_saison_ttc": 0,
+        "price_night_no_wd_middle_saison_ttc": 0,
+        "price_night_wd_middle_saison_ttc": 0,
+        "price_night_no_wd_hight_saison_ttc": 0,
+        "price_night_wd_hight_saison_ttc": 0,
+        "price_taxe_by_night_by_adult_ttc": 0,
+        "price_service_taxe_value_ttc": 0,
+        "price_reservation_taxe_value_ttc": 0,
+    
+        "price_night_off_ht": 0,
+        "price_night_no_wd_low_saison_ht": 0,
+        "price_night_wd_low_saison_ht": 0,
+        "price_night_no_wd_middle_saison_ht": 0,
+        "price_night_wd_middle_saison_ht": 0,
+        "price_night_no_wd_hight_saison_ht": 0,
+        "price_night_wd_hight_saison_ht": 0,
+        "price_service_taxe_value_ht": 0,
+        "price_reservation_taxe_value_ht": 0,
+    
+        "additionnal_price_taxe_night_off": 0,
+        "additionnal_price_night_no_wd_low_saison": 0,
+        "additionnal_price_night_wd_low_saison": 0,
+        "additionnal_price_night_no_wd_middle_saison": 0,
+        "additionnal_price_night_wd_middle_saison": 0,
+        "additionnal_price_night_no_wd_hight_saison": 0,
+        "additionnal_price_night_wd_hight_saison": 0,
+        "additionnal_price_service_taxe_value": 0,
+        "additionnal_price_reservation_taxe_value": 0,
+    
+        "service_taxe_value": 0,
+        "reservation_taxe_value": 0,
+    
+        "priceServiceTaxeValueTTC": 0,
+        "priceLocationTaxeValueHT": 0,
+        "priceLocationTaxeValueTTC": 0,
+    
+        "specialDiscountValue": 0,
+    
+        "totalHTBeforeSpecialDiscount": 0,
+        "totalHTAfterSpecialDiscount": 0,
+        "totalTTCBeforeSpecialDiscount": 0,
+        "totalTTCAfterSpecialDiscount": 0,
+    
+        "totalHT": 0,
+        "total_ttc": 0
+    
+    }]
+}
