@@ -9,7 +9,8 @@ const stripe = require('stripe')(`${process.env.TEST_CODE}`);
 
 
 exports.invoice = (req, res, err) => {
-    // console.log(req.body)
+   
+    console.log(req.body)
     const time = new Date().toISOString().split("T")[0]
     
     function generateHeader(doc) {

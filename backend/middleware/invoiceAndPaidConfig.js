@@ -103,320 +103,381 @@ const stripe = require('stripe')(`${process.env.TEST_CODE}`);
 
 module.exports = (req, res, next) => {
 
-    date_array_reservation = new Array();
-    date_night_off = new Array();
-    date_saison_low = new Array();
-    date_saison_middle = new Array();
-    date_saison_hight = new Array();
-
-    Date.prototype.addDays = function (days) {
-        var dat = new Date(this.valueOf())
-        dat.setDate(dat.getDate() + days);
-        // console.log(dat)
-        return dat;
-    }
-
-    function getDates(startDate, stopDate) {
-        var dateArray = new Array();
-        var currentDate = startDate.addDays(-1);
-        while (currentDate < stopDate) {
-            currentDate = currentDate.addDays(1);
-            dateArray.push(currentDate)
-        }
-        return dateArray;
-    }
-
-    let sql = `SELECT * FROM augiteduboisv2.table_fixed_price_and_fixed_taxe`;
-    dbConnect.query(sql, function (err, data) {
-        if (err) {
-            console.log(err)
-        }
-        // console.log(data)
-        let totalDays = date_array_reservation.length;
-        let totalNight = totalDays - 1;
-
-        const test = new Promise((resolve, reject) => {
-
-
-
-            const date_array_reservation = getDates(new Date(req.body.dateStart), (new Date(req.body.dateEnd)));
-
-            if (date_array_reservation != undefined) {
-                resolve([{
-                    "date_array_reservation": date_array_reservation,
-                    "taxe_by_adult_by_night": data[0].taxe_by_adult_by_night,
-                    "taxe_service": data[0].taxe_service,
-                    "taxe_location": data[0].taxe_location,
-                    "taxe_by_adult_by_night": data[0].taxe_by_adult_by_night,
-                    "price_night_low_saison_out_wd": data[0].price_night_low_saison_out_wd,
-                    "price_night_low_saison_in_wd": data[0].price_night_low_saison_in_wd,
-                    "price_night_middle_saison_out_wd": data[0].price_night_middle_saison_out_wd,
-                    "price_night_middle_saison_in_wd": data[0].price_night_middle_saison_in_wd,
-                    "price_night_hight_saison_out_wd": data[0].price_night_hight_saison_out_wd,
-                    "price_night_hight_saison_in_wd": data[0].price_night_hight_saison_in_wd,
-                    "price_night_of_celebration": data[0].price_night_of_celebration,
-
-                }])
-                console.log(data)
-
-            } else {
-                reject("oops")
-            }
-        })
-        test.then((data) => {
-
-            let count_night_off = 0;
-            let count_night_in_wd_low_saison = 0;
-            let count_night_in_wd_middle_saison = 0;
-            let count_night_in_wd_hight_saison = 0;
-            let count_night_out_wd_low_saison = 0;
-            let count_night_out_wd_middle_saison = 0;
-            let count_night_out_wd_hight_saison = 0;
-
-            let date_off_one = Date.now()
-            date_off_one = new Date(date_off_one).setMonth(0)
-            date_off_one = new Date(date_off_one).setDate(1)
-            date_off_one = new Date(date_off_one).toISOString().split('T')[0]
-            let date_off_two = Date.now()
-            date_off_two = new Date(date_off_two).setMonth(4)
-            date_off_two = new Date(date_off_two).setDate(1)
-            date_off_two = new Date(date_off_two).toISOString().split('T')[0]
-            let date_off_three = Date.now()
-            date_off_three = new Date(date_off_three).setMonth(4)
-            date_off_three = new Date(date_off_three).setDate(8)
-            date_off_three = new Date(date_off_three).toISOString().split('T')[0]
-            let date_off_four = Date.now()
-            date_off_four = new Date(date_off_four).setMonth(6)
-            date_off_four = new Date(date_off_four).setDate(14)
-            date_off_four = new Date(date_off_four).toISOString().split('T')[0]
-            let date_off_five = Date.now()
-            date_off_five = new Date(date_off_five).setMonth(7)
-            date_off_five = new Date(date_off_five).setDate(15)
-            date_off_five = new Date(date_off_five).toISOString().split('T')[0]
-            let date_off_six = Date.now()
-            date_off_six = new Date(date_off_six).setMonth(10)
-            date_off_six = new Date(date_off_six).setDate(1)
-            date_off_six = new Date(date_off_six).toISOString().split('T')[0]
-            let date_off_seven = Date.now()
-            date_off_seven = new Date(date_off_seven).setMonth(10)
-            date_off_seven = new Date(date_off_seven).setDate(11)
-            date_off_seven = new Date(date_off_seven).toISOString().split('T')[0]
-            let date_off_height = Date.now()
-            date_off_height = new Date(date_off_height).setMonth(11)
-            date_off_height = new Date(date_off_height).setDate(25)
-            date_off_height = new Date(date_off_height).toISOString().split('T')[0]
-
-            data[0].date_array_reservation.forEach(date_reservation => {
-
-                let recup_date = new Date(date_reservation).toISOString().split('T')[0]
-                if (recup_date === date_off_one || recup_date === date_off_two || recup_date === date_off_three || recup_date === date_off_four || recup_date === date_off_five || recup_date === date_off_six || recup_date === date_off_seven || recup_date === date_off_height) {
-                    // console.log(date_off_one, date_off_two, date_off_three)
-                    count_night_off++
-                    // console.log(count_night_off) 
-                } else {
-                    null
-                }
-                if (recup_date != date_off_one && recup_date != date_off_two && recup_date != date_off_three && recup_date != date_off_four && recup_date != date_off_five && recup_date != date_off_six && recup_date != date_off_seven && recup_date != date_off_height) {
-
-                    let get_month = new Date(recup_date).getMonth()
-                    let get_day = new Date(recup_date).getDay()
-                    let low_saison = [10, 11, 0, 1];
-                    let middle_saison = [2, 3, 4, 5, 8, 9];
-                    let hight_saison = [6, 7];
-                    let no_wd = [0, 1, 2, 3, 6];
-                    let wd = [5, 4];
-
-                    // &&&&&&&&&&&&&& LOW SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                    if (get_month === low_saison[0] || get_month === low_saison[1] || get_month === low_saison[2] || get_month === low_saison[3]) {
-                        if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
-                            count_night_out_wd_low_saison++;
-                        } else if (get_day === wd[0] || get_day === wd[1]) {
-                            count_night_in_wd_low_saison++;
-                            // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
-                        } else { null }
-                    } else {
-                        null
-                    }
-                    // console.log()
-                    // &&&&&&&&&&&&&& MIDDLE SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                    if (get_month === middle_saison[0] || get_month === middle_saison[1] || get_month === middle_saison[2] || get_month === middle_saison[3] || get_month === middle_saison[4] || get_month === middle_saison[5]) {
-                        if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
-                            count_night_out_wd_middle_saison++;
-                            // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes hors weekend !" })
-                        } else if (get_day === wd[0] || get_day === wd[1]) {
-                            count_night_in_wd_middle_saison++;
-                            // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
-                        } else { null }
-                    } else {
-                        null
-                    }
-                    // console.log()
-                    // &&&&&&&&&&&&&& HIGHT SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                    if (get_month === hight_saison[0] || get_month === hight_saison[1]) {
-                        if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
-                            count_night_out_wd_hight_saison++;
-                            // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes hors weekend !" })
-                        } else if (get_day === wd[0] || get_day === wd[1]) {
-                            count_night_in_wd_hight_saison++;
-                            // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
-                        } else { null }
-                    } else {
-                        null
-                    }
-                } else {
-                    null
-                }
-            });
-            return ({
-                count_total_night: data[0].date_array_reservation.length,
-                taxe_by_adult_by_night: data[0].taxe_by_adult_by_night,
-                count_night_off: count_night_off,
-                count_night_out_wd_low_saison: count_night_out_wd_low_saison,
-                count_night_in_wd_low_saison: count_night_in_wd_low_saison,
-                count_night_out_wd_middle_saison: count_night_out_wd_middle_saison,
-                count_night_in_wd_middle_saison: count_night_in_wd_middle_saison,
-                count_night_out_wd_hight_saison: count_night_out_wd_hight_saison,
-                count_night_in_wd_hight_saison: count_night_in_wd_hight_saison,
-                taxe_service: data[0].taxe_service,
-                taxe_location: data[0].taxe_location,
-                taxe_by_adult_by_night: data[0].taxe_by_adult_by_night,
-                price_night_low_saison_out_wd: data[0].price_night_low_saison_out_wd,
-                price_night_low_saison_in_wd: data[0].price_night_low_saison_in_wd,
-                price_night_middle_saison_out_wd: data[0].price_night_middle_saison_out_wd,
-                price_night_middle_saison_in_wd: data[0].price_night_middle_saison_in_wd,
-                price_night_hight_saison_out_wd: data[0].price_night_hight_saison_out_wd,
-                price_night_hight_saison_in_wd: data[0].price_night_hight_saison_in_wd,
-                price_night_of_celebration: data[0].price_night_of_celebration,
-            })
-        }).then((ready_for_calculated) => {
-            console.log(ready_for_calculated)
-
-            const body = [{
-
-                date_init: new Date().toISOString().split("T")[0],
-                user_id: "",
-                link_invoice: "",
-
-                numberInvoice: "",
-                name: "",
-                lastName: "",
-                mobile: "",
-                email: "",
-                nationality: "",
-
-                address: "",
-                city: "",
-                state: "",
-                country: "",
-                postalCode: "",
-
-                dateStart: req.body.dateStart,
-                dateEnd: req.body.dateEnd,
-
-                nbPeople: Number(req.body.nbPeople),
-                nbAdult: Number(req.body.nbAdult),
-                nbChild: Number(req.body.nbChild),
-
-                total_nb_night: ready_for_calculated.count_total_night,
-                total_nb_night_off: ready_for_calculated.count_night_off,
-                total_nb_night_no_wd_low_saison: ready_for_calculated.count_night_out_wd_low_saison,
-                total_nb_night_wd_low_saison: ready_for_calculated.count_night_in_wd_low_saison,
-                total_nb_night_no_wd_middle_saison: ready_for_calculated.count_night_out_wd_middle_saison,
-                total_nb_night_wd_middle_saison: ready_for_calculated.count_night_in_wd_middle_saison,
-                total_nb_night_no_wd_hight_saison: ready_for_calculated.count_night_out_wd_hight_saison,
-                total_nb_night_wd_hight_saison: ready_for_calculated.count_night_in_wd_hight_saison,
-                // info tariff unitaire ttc
-                info_tarif_night_off: ready_for_calculated.price_night_of_celebration,
-                info_tarif_night_no_wd_low_saison: ready_for_calculated.price_night_low_saison_out_wd,
-                info_tarif_night_wd_low_saison: ready_for_calculated.price_night_low_saison_in_wd,
-                info_tarif_night_no_wd_middle_saison: ready_for_calculated.price_night_middle_saison_out_wd,
-                info_tarif_night_wd_middle_saison: ready_for_calculated.price_night_middle_saison_in_wd,
-                info_tarif_night_no_wd_hight_saison: ready_for_calculated.price_night_hight_saison_out_wd,
-                info_tarif_night_wd_hight_saison: ready_for_calculated.price_night_hight_saison_in_wd,
-
-                // info tariff unitaire ht
-                info_tarif_night_off_ht: ready_for_calculated.price_night_of_celebration - (ready_for_calculated.price_night_of_celebration * ready_for_calculated.taxe_location /100),
-                info_tarif_night_no_wd_low_saison_ht: ready_for_calculated.price_night_low_saison_out_wd - (ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.taxe_location /100),
-                info_tarif_night_wd_low_saison_ht: ready_for_calculated.price_night_low_saison_in_wd - (ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.taxe_location /100),
-                info_tarif_night_no_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_out_wd - (ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.taxe_location /100),
-                info_tarif_night_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_in_wd - (ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.taxe_location /100),
-                info_tarif_night_no_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_out_wd - (ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.taxe_location /100),
-                info_tarif_night_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_in_wd - (ready_for_calculated.price_night_hight_saison_in_wd * ready_for_calculated.taxe_location /100),
-                //cout des taxes unitaire
-                price_service_taxe: 0,
-                price_taxe_u_night_off: ready_for_calculated.price_night_of_celebration - (ready_for_calculated.price_night_of_celebration - (ready_for_calculated.price_night_of_celebration * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_night_no_wd_low_saison_ht: ready_for_calculated.price_night_low_saison_out_wd - (ready_for_calculated.price_night_low_saison_out_wd - (ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_night__wd_low_saison_ht: ready_for_calculated.price_night_low_saison_in_wd - ( ready_for_calculated.price_night_low_saison_in_wd - (ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_nightnight_no_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_in_wd - (ready_for_calculated.price_night_middle_saison_in_wd - (ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_in_wd - (ready_for_calculated.price_night_middle_saison_in_wd - (ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_night_no_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_out_wd - (ready_for_calculated.price_night_hight_saison_out_wd - (ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.taxe_location /100)) ,
-                price_taxe_u_night_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_in_wd - (ready_for_calculated.price_night_hight_saison_in_wd - (ready_for_calculated.price_night_hight_saison_in_wd * ready_for_calculated.taxe_location /100)) ,
-                // prix Groupe TTC
-                price_night_off_ttc: ready_for_calculated.count_night_off * ready_for_calculated.price_night_of_celebration,
-                price_night_no_wd_low_saison_ttc: ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison,
-                price_night_wd_low_saison_ttc: ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_in_wd_low_saison,
-                price_night_no_wd_middle_saison_ttc: ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison,
-                price_night_wd_middle_saison_ttc: ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison,
-                price_night_no_wd_middle_saison_ttc: ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison,
-                price_night_wd_hight_saison_ttc: ready_for_calculated.price_night_hight_saison_in_wd * ready_for_calculated.count_night_in_wd_hight_saison,
-
-               
-                price_taxe_by_night_by_adult_ttc: (ready_for_calculated.taxe_by_adult_by_night * ready_for_calculated.count_total_night) * Number(req.body.nbAdult),
-                
-                // prix Groupe HT
-                price_night_off_ht: ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_off -((ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_off) * ready_for_calculated.taxe_location/100),
-                price_night_no_wd_low_saison_ht: ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison -((ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison) * ready_for_calculated.taxe_location /100 ),
-                price_night_wd_low_saison_ht: ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_in_wd_low_saison -((ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_out_wd_low_saison) * ready_for_calculated.taxe_location /100 ),
-                price_night_no_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison -((ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison) * ready_for_calculated.taxe_location /100 ),
-                price_night_wd_middle_saison_ht: ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison -((ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison) * ready_for_calculated.taxe_location /100 ),
-
-                price_night_no_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison -((ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison) * ready_for_calculated.taxe_location /100 ),
-                price_night_wd_hight_saison_ht: ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison -((ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison) * ready_for_calculated.taxe_location /100 ),
-                
-                // coup des taxes groupées
-                additionnal_price_taxe_night_off: (ready_for_calculated.count_night_off * ready_for_calculated.price_night_of_celebration) - (ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_off -((ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_off) * ready_for_calculated.taxe_location/100)),
-                additionnal_price_night_no_wd_low_saison: (ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison) - (ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison -((ready_for_calculated.price_night_low_saison_out_wd * ready_for_calculated.count_night_out_wd_low_saison) * ready_for_calculated.taxe_location /100 )),
-                additionnal_price_night_wd_low_saison: ( ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_in_wd_low_saison) - (ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_in_wd_low_saison -((ready_for_calculated.price_night_low_saison_in_wd * ready_for_calculated.count_night_out_wd_low_saison) * ready_for_calculated.taxe_location /100 )),
-                additionnal_price_night_no_wd_middle_saison:( ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison) - (ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison -((ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_middle_saison) * ready_for_calculated.taxe_location /100 )),
-                additionnal_price_night_wd_middle_saison: (ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison) - (ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison -((ready_for_calculated.price_night_middle_saison_in_wd * ready_for_calculated.count_night_in_wd_middle_saison) * ready_for_calculated.taxe_location /100 )),
-
-                additionnal_price_night_no_wd_hight_saison: ( ready_for_calculated.price_night_middle_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison) - ( ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison -((ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison) * ready_for_calculated.taxe_location /100 )),
-                additionnal_price_night_wd_hight_saison: (ready_for_calculated.price_night_hight_saison_in_wd * ready_for_calculated.count_night_in_wd_hight_saison) - (ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison -((ready_for_calculated.price_night_hight_saison_out_wd * ready_for_calculated.count_night_out_wd_hight_saison) * ready_for_calculated.taxe_location /100 )),
-
-                additionnal_price_service_taxe_value: 0,
-                additionnal_price_reservation_taxe_value: 0,
-
-                additionnal_price_taxe_by_night_by_adult: ready_for_calculated.taxe_by_adult_by_night,
-
-                service_taxe_value: 0,
-                reservation_taxe_value: 0,
-
-                priceServiceTaxeValueTTC: 0,
-                priceLocationTaxeValueHT: 0,
-                priceLocationTaxeValueTTC: 0,
-
-                specialDiscountValue: 0,
-
-                totalHTBeforeSpecialDiscount: 0,
-                totalHTAfterSpecialDiscount: 0,
-                totalTTCBeforeSpecialDiscount: 0,
-                totalTTCAfterSpecialDiscount: 0,
-
-                totalHT: 0,
-                total_ttc: 0
-
-            }]
-            body;
-            console.log(ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_out_wd_middle_saison)
-            console.log(body)
-        }).catch((err) => {
-            console.log(err)
-        })
-    })
     try {
-        setTimeout(() => {
-            next();
-        }, 300);
+        date_array_reservation = new Array();
+        date_night_off = new Array();
+        date_saison_low = new Array();
+        date_saison_middle = new Array();
+        date_saison_hight = new Array();
+    
+        Date.prototype.addDays = function (days) {
+            var dat = new Date(this.valueOf())
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        }
+    
+        function getDates(startDate, stopDate) {
+            var dateArray = new Array();
+            var currentDate = startDate.addDays(-1);
+            while (currentDate < stopDate) {
+                currentDate = currentDate.addDays(1);
+                dateArray.push(currentDate)
+            }
+            return dateArray;
+        }
+    
+        let sql = `SELECT * FROM augiteduboisv2.table_fixed_price_and_fixed_taxe`;
+        dbConnect.query(sql, function (err, data) {
+            if (err) {
+                console.log(err)
+            }
+            let totalDays = date_array_reservation.length;
+            let totalNight = totalDays - 1;
+    
+            const test = new Promise((resolve, reject) => {
+    
+    
+    
+                const date_array_reservation = getDates(new Date(req.body.dateStart), (new Date(req.body.dateEnd)));
+    
+                if (date_array_reservation != undefined) {
+                    resolve([{
+                        "date_array_reservation": date_array_reservation,
+                        "taxe_by_adult_by_night": data[0].taxe_by_adult_by_night,
+                        "taxe_service": data[0].taxe_service,
+                        "taxe_location": data[0].taxe_location,
+                        "taxe_by_adult_by_night": data[0].taxe_by_adult_by_night,
+                        "price_night_low_saison_out_wd": data[0].price_night_low_saison_out_wd,
+                        "price_night_low_saison_in_wd": data[0].price_night_low_saison_in_wd,
+                        "price_night_middle_saison_out_wd": data[0].price_night_middle_saison_out_wd,
+                        "price_night_middle_saison_in_wd": data[0].price_night_middle_saison_in_wd,
+                        "price_night_hight_saison_out_wd": data[0].price_night_hight_saison_out_wd,
+                        "price_night_hight_saison_in_wd": data[0].price_night_hight_saison_in_wd,
+                        "price_night_of_celebration": data[0].price_night_of_celebration,
+    
+                    }])
+                } else {
+                    reject("oops")
+                }
+            })
+            test.then((data) => {
+    
+                let count_night_off = 0;
+                let count_night_in_wd_low_saison = 0;
+                let count_night_in_wd_middle_saison = 0;
+                let count_night_in_wd_hight_saison = 0;
+                let count_night_out_wd_low_saison = 0;
+                let count_night_out_wd_middle_saison = 0;
+                let count_night_out_wd_hight_saison = 0;
+    
+                let date_off_one = Date.now()
+                date_off_one = new Date(date_off_one).setMonth(0)
+                date_off_one = new Date(date_off_one).setDate(1)
+                date_off_one = new Date(date_off_one).toISOString().split('T')[0]
+                let date_off_two = Date.now()
+                date_off_two = new Date(date_off_two).setMonth(4)
+                date_off_two = new Date(date_off_two).setDate(1)
+                date_off_two = new Date(date_off_two).toISOString().split('T')[0]
+                let date_off_three = Date.now()
+                date_off_three = new Date(date_off_three).setMonth(4)
+                date_off_three = new Date(date_off_three).setDate(8)
+                date_off_three = new Date(date_off_three).toISOString().split('T')[0]
+                let date_off_four = Date.now()
+                date_off_four = new Date(date_off_four).setMonth(6)
+                date_off_four = new Date(date_off_four).setDate(14)
+                date_off_four = new Date(date_off_four).toISOString().split('T')[0]
+                let date_off_five = Date.now()
+                date_off_five = new Date(date_off_five).setMonth(7)
+                date_off_five = new Date(date_off_five).setDate(15)
+                date_off_five = new Date(date_off_five).toISOString().split('T')[0]
+                let date_off_six = Date.now()
+                date_off_six = new Date(date_off_six).setMonth(10)
+                date_off_six = new Date(date_off_six).setDate(1)
+                date_off_six = new Date(date_off_six).toISOString().split('T')[0]
+                let date_off_seven = Date.now()
+                date_off_seven = new Date(date_off_seven).setMonth(10)
+                date_off_seven = new Date(date_off_seven).setDate(11)
+                date_off_seven = new Date(date_off_seven).toISOString().split('T')[0]
+                let date_off_height = Date.now()
+                date_off_height = new Date(date_off_height).setMonth(11)
+                date_off_height = new Date(date_off_height).setDate(25)
+                date_off_height = new Date(date_off_height).toISOString().split('T')[0]
+    
+                data[0].date_array_reservation.forEach(date_reservation => {
+    
+                    let recup_date = new Date(date_reservation).toISOString().split('T')[0]
+                    if (recup_date === date_off_one || recup_date === date_off_two || recup_date === date_off_three || recup_date === date_off_four || recup_date === date_off_five || recup_date === date_off_six || recup_date === date_off_seven || recup_date === date_off_height) {
+                        // console.log(date_off_one, date_off_two, date_off_three)
+                        count_night_off++
+                        // console.log(count_night_off) 
+                    } else {
+                        null
+                    }
+                    if (recup_date != date_off_one && recup_date != date_off_two && recup_date != date_off_three && recup_date != date_off_four && recup_date != date_off_five && recup_date != date_off_six && recup_date != date_off_seven && recup_date != date_off_height) {
+    
+                        let get_month = new Date(recup_date).getMonth()
+                        let get_day = new Date(recup_date).getDay()
+                        let low_saison = [10, 11, 0, 1];
+                        let middle_saison = [2, 3, 4, 5, 8, 9];
+                        let hight_saison = [6, 7];
+                        let no_wd = [0, 1, 2, 3, 6];
+                        let wd = [5, 4];
+    
+                        // &&&&&&&&&&&&&& LOW SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                        if (get_month === low_saison[0] || get_month === low_saison[1] || get_month === low_saison[2] || get_month === low_saison[3]) {
+                            if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
+                                count_night_out_wd_low_saison++;
+                            } else if (get_day === wd[0] || get_day === wd[1]) {
+                                count_night_in_wd_low_saison++;
+                                // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
+                            } else { null }
+                        } else {
+                            null
+                        }
+                        // console.log()
+                        // &&&&&&&&&&&&&& MIDDLE SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                        if (get_month === middle_saison[0] || get_month === middle_saison[1] || get_month === middle_saison[2] || get_month === middle_saison[3] || get_month === middle_saison[4] || get_month === middle_saison[5]) {
+                            if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
+                                count_night_out_wd_middle_saison++;
+                                // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes hors weekend !" })
+                            } else if (get_day === wd[0] || get_day === wd[1]) {
+                                count_night_in_wd_middle_saison++;
+                                // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
+                            } else { null }
+                        } else {
+                            null
+                        }
+                        // console.log()
+                        // &&&&&&&&&&&&&& HIGHT SAISON &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                        if (get_month === hight_saison[0] || get_month === hight_saison[1]) {
+                            if (get_day === no_wd[0] || get_day === no_wd[1] || get_day === no_wd[2] || get_day === no_wd[3] || get_day === no_wd[4]) {
+                                count_night_out_wd_hight_saison++;
+                                // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes hors weekend !" })
+                            } else if (get_day === wd[0] || get_day === wd[1]) {
+                                count_night_in_wd_hight_saison++;
+                                // console.log({ date: recup_date, day: get_day, month: get_month, info: "nous sommes en weekend !" })
+                            } else { null }
+                        } else {
+                            null
+                        }
+                    } else {
+                        null
+                    }
+                });
+                return ({
+                    count_total_night: data[0].date_array_reservation.length - 1,
+                    taxe_by_adult_by_night: data[0].taxe_by_adult_by_night,
+                    count_night_off: count_night_off,
+                    count_night_out_wd_low_saison: count_night_out_wd_low_saison,
+                    count_night_in_wd_low_saison: count_night_in_wd_low_saison,
+                    count_night_out_wd_middle_saison: count_night_out_wd_middle_saison,
+                    count_night_in_wd_middle_saison: count_night_in_wd_middle_saison,
+                    count_night_out_wd_hight_saison: count_night_out_wd_hight_saison,
+                    count_night_in_wd_hight_saison: count_night_in_wd_hight_saison,
+                    taxe_service: data[0].taxe_service,
+                    taxe_location: data[0].taxe_location,
+                    taxe_by_adult_by_night: data[0].taxe_by_adult_by_night,
+                    price_night_low_saison_out_wd: data[0].price_night_low_saison_out_wd,
+                    price_night_low_saison_in_wd: data[0].price_night_low_saison_in_wd,
+                    price_night_middle_saison_out_wd: data[0].price_night_middle_saison_out_wd,
+                    price_night_middle_saison_in_wd: data[0].price_night_middle_saison_in_wd,
+                    price_night_hight_saison_out_wd: data[0].price_night_hight_saison_out_wd,
+                    price_night_hight_saison_in_wd: data[0].price_night_hight_saison_in_wd,
+                    price_night_of_celebration: data[0].price_night_of_celebration,
+                })
+            }).then((ready_for_calculated) => {
+    
+                // nombre de nuits
+                let total_nb_night = ready_for_calculated.count_total_night;
+                let total_nb_night_off = ready_for_calculated.count_night_off;
+                let total_nb_night_no_wd_low_saison = ready_for_calculated.count_night_out_wd_low_saison;
+                let total_nb_night_wd_low_saison = ready_for_calculated.count_night_in_wd_low_saison;
+                let total_nb_night_no_wd_middle_saison = ready_for_calculated.count_night_out_wd_middle_saison;
+                let total_nb_night_wd_middle_saison = ready_for_calculated.count_night_in_wd_middle_saison;
+                let total_nb_night_no_wd_hight_saison = ready_for_calculated.count_night_out_wd_hight_saison;
+                let total_nb_night_wd_hight_saison = ready_for_calculated.count_night_in_wd_hight_saison;
+                //info taxes taux
+                let taux_taxe_location = ready_for_calculated.taxe_location;
+                let taux_taxe_service = ready_for_calculated.taxe_service;
+                let price_taxe_by_night_by_adult = ready_for_calculated.taxe_by_adult_by_night;
+                // info tariff unitaire TTC
+                let info_tarif_night_off = ready_for_calculated.price_night_of_celebration;
+                let info_tarif_night_no_wd_low_saison = ready_for_calculated.price_night_low_saison_out_wd;
+                let info_tarif_night_wd_low_saison = ready_for_calculated.price_night_low_saison_in_wd;
+                let info_tarif_night_no_wd_middle_saison = ready_for_calculated.price_night_middle_saison_out_wd;
+                let info_tarif_night_wd_middle_saison = ready_for_calculated.price_night_middle_saison_in_wd;
+                let info_tarif_night_no_wd_hight_saison = ready_for_calculated.price_night_hight_saison_out_wd;
+                let info_tarif_night_wd_hight_saison = ready_for_calculated.price_night_hight_saison_in_wd;
+                // info tariff unitaire HT
+                let info_tarif_night_off_ht = info_tarif_night_off - (info_tarif_night_off * taux_taxe_location / 100);
+                let info_tarif_night_no_wd_low_saison_ht = info_tarif_night_no_wd_low_saison - (info_tarif_night_no_wd_low_saison * taux_taxe_location / 100);
+                let info_tarif_night_wd_low_saison_ht = info_tarif_night_wd_low_saison - (info_tarif_night_wd_low_saison * taux_taxe_location / 100);
+                let info_tarif_night_no_wd_middle_saison_ht = info_tarif_night_no_wd_middle_saison - (info_tarif_night_no_wd_middle_saison * taux_taxe_location / 100);
+                let info_tarif_night_wd_middle_saison_ht = info_tarif_night_wd_middle_saison - (info_tarif_night_wd_middle_saison * taux_taxe_location / 100);
+                let info_tarif_night_no_wd_hight_saison_ht = info_tarif_night_no_wd_hight_saison - (info_tarif_night_no_wd_hight_saison * taux_taxe_location / 100);
+                let info_tarif_night_wd_hight_saison_ht = info_tarif_night_wd_hight_saison - (info_tarif_night_wd_hight_saison * taux_taxe_location / 100);
+    
+                //cout des taxes unitaire
+                let price_service_taxe = 0;
+                let addtionnal_price_taxe_u_night_off = info_tarif_night_off - info_tarif_night_off_ht;
+                let addtionnal_price_taxe_u_night_no_wd_low_saison = info_tarif_night_no_wd_low_saison - info_tarif_night_no_wd_low_saison_ht;
+                let addtionnal_price_taxe_u_night_wd_low_saison = info_tarif_night_wd_low_saison - info_tarif_night_wd_low_saison_ht;
+                let addtionnal_price_taxe_u_nightnight_no_wd_middle_saison = info_tarif_night_no_wd_middle_saison - info_tarif_night_no_wd_middle_saison_ht;
+                let addtionnal_price_taxe_u_wd_middle_saison = info_tarif_night_wd_middle_saison - info_tarif_night_wd_middle_saison_ht;
+                let addtionnal_price_taxe_u_night_no_wd_hight_saison = info_tarif_night_no_wd_hight_saison - info_tarif_night_no_wd_hight_saison_ht;
+                let addtionnal_price_taxe_u_night_wd_hight_saison = info_tarif_night_wd_hight_saison - info_tarif_night_wd_hight_saison_ht;
+    
+                // prix Groupe TTC
+                let price_night_off_ttc = total_nb_night_off * info_tarif_night_off;
+                let price_night_no_wd_low_saison_ttc = total_nb_night_no_wd_low_saison * info_tarif_night_no_wd_low_saison;
+                let price_night_wd_low_saison_ttc = total_nb_night_wd_low_saison * info_tarif_night_wd_low_saison;
+                let price_night_no_wd_middle_saison_ttc = total_nb_night_no_wd_middle_saison * info_tarif_night_wd_middle_saison;
+                let price_night_wd_middle_saison_ttc = total_nb_night_wd_middle_saison * info_tarif_night_wd_middle_saison;
+                let price_night_no_wd_hight_saison_ttc = total_nb_night_no_wd_hight_saison * info_tarif_night_no_wd_hight_saison;
+                let price_night_wd_hight_saison_ttc = total_nb_night_wd_hight_saison * info_tarif_night_wd_hight_saison;
+    
+    
+                // prix Groupe HT
+                let price_night_off_ht = price_night_off_ttc - (price_night_off_ttc * taux_taxe_location / 100);
+                let price_night_no_wd_low_saison_ht = price_night_no_wd_low_saison_ttc - (price_night_no_wd_low_saison_ttc * taux_taxe_location / 100);
+                let price_night_wd_low_saison_ht = price_night_wd_low_saison_ttc - (price_night_wd_low_saison_ttc * taux_taxe_location / 100);
+                let price_night_no_wd_middle_saison_ht = price_night_no_wd_middle_saison_ttc - (price_night_no_wd_middle_saison_ttc * taux_taxe_location / 100);
+                let price_night_wd_middle_saison_ht = price_night_wd_middle_saison_ttc - (price_night_wd_middle_saison_ttc * taux_taxe_location / 100);
+                let price_night_no_wd_hight_saison_ht = price_night_no_wd_hight_saison_ttc - (price_night_no_wd_hight_saison_ttc * taux_taxe_location / 100);
+                let price_night_wd_hight_saison_ht = price_night_wd_hight_saison_ttc - (price_night_wd_hight_saison_ttc * taux_taxe_location / 100);
+    
+                // coup des taxes groupe
+                let additionnal_price_taxe_night_off = price_night_off_ttc - price_night_off_ht;
+                let additionnal_price_night_no_wd_low_saison = price_night_no_wd_low_saison_ttc - price_night_no_wd_low_saison_ht;
+                let additionnal_price_night_wd_low_saison = price_night_wd_low_saison_ttc - price_night_wd_low_saison_ht;
+                let additionnal_price_night_no_wd_middle_saison = price_night_no_wd_middle_saison_ttc - price_night_no_wd_middle_saison_ht;
+                let additionnal_price_night_wd_middle_saison = price_night_wd_middle_saison_ttc - price_night_wd_middle_saison_ht;
+                let additionnal_price_night_no_wd_hight_saison = price_night_no_wd_hight_saison_ttc - price_night_no_wd_hight_saison_ht;
+                let additionnal_price_night_wd_hight_saison = price_night_wd_hight_saison_ttc - price_night_wd_hight_saison_ht;
+                let additionnal_price_taxe_by_night_by_adult =  (price_taxe_by_night_by_adult * total_nb_night) * Number(req.body.nbAdult) ;
+    
+                const body = [{
+    
+                    date_init: new Date().toISOString().split("T")[0],
+                    user_id: "",
+                    link_invoice: "",
+    
+                    numberInvoice: "",
+                    name: "",
+                    lastName: "",
+                    mobile: "",
+                    email: "",
+                    nationality: "",
+    
+                    address: "",
+                    city: "",
+                    state: "",
+                    country: "",
+                    postalCode: "",
+    
+                    dateStart: req.body.dateStart,
+                    dateEnd: req.body.dateEnd,
+    
+                    nbPeople: Number(req.body.nbPeople),
+                    nbAdult: Number(req.body.nbAdult),
+                    nbChild: Number(req.body.nbChild),
+    
+                    total_nb_night: total_nb_night,
+                    total_nb_night_off: total_nb_night_off,
+                    total_nb_night_no_wd_low_saison: total_nb_night_no_wd_low_saison,
+                    total_nb_night_wd_low_saison: total_nb_night_wd_low_saison,
+                    total_nb_night_no_wd_middle_saison: total_nb_night_no_wd_middle_saison,
+                    total_nb_night_wd_middle_saison: total_nb_night_wd_middle_saison,
+                    total_nb_night_no_wd_hight_saison: total_nb_night_no_wd_hight_saison,
+                    total_nb_night_wd_hight_saison: total_nb_night_wd_hight_saison,
+                    // prix unitaire TTC
+                    info_tarif_night_off: info_tarif_night_off,
+                    info_tarif_night_no_wd_low_saison: info_tarif_night_no_wd_low_saison,
+                    info_tarif_night_wd_low_saison: info_tarif_night_wd_low_saison,
+                    info_tarif_night_no_wd_middle_saison: info_tarif_night_no_wd_middle_saison,
+                    info_tarif_night_wd_middle_saison: info_tarif_night_wd_middle_saison,
+                    info_tarif_night_no_wd_hight_saison: info_tarif_night_no_wd_hight_saison,
+                    info_tarif_night_wd_hight_saison: info_tarif_night_wd_hight_saison,
+    
+                    // prix unitaire HT
+                    info_tarif_night_off_ht: info_tarif_night_off_ht,
+                    info_tarif_night_no_wd_low_saison_ht: info_tarif_night_no_wd_low_saison_ht,
+                    info_tarif_night_wd_low_saison_ht: info_tarif_night_wd_low_saison_ht,
+                    info_tarif_night_no_wd_middle_saison_ht: info_tarif_night_no_wd_middle_saison_ht,
+                    info_tarif_night_wd_middle_saison_ht: info_tarif_night_wd_middle_saison_ht,
+                    info_tarif_night_no_wd_hight_saison_ht: info_tarif_night_no_wd_hight_saison_ht,
+                    info_tarif_night_wd_hight_saison_ht: info_tarif_night_wd_hight_saison_ht,
+                    //cout des taxes unitaire
+                    price_service_taxe: price_service_taxe,                
+                    addtionnal_price_taxe_u_night_off: addtionnal_price_taxe_u_night_off,
+                    addtionnal_price_taxe_u_night_no_wd_low_saison: addtionnal_price_taxe_u_night_no_wd_low_saison,
+                    addtionnal_price_taxe_u_night_wd_low_saison: addtionnal_price_taxe_u_night_wd_low_saison,
+                    addtionnal_price_taxe_u_nightnight_no_wd_middle_saison: addtionnal_price_taxe_u_nightnight_no_wd_middle_saison,
+                    addtionnal_price_taxe_u_wd_middle_saison: addtionnal_price_taxe_u_wd_middle_saison,
+                    addtionnal_price_taxe_u_night_no_wd_hight_saison: addtionnal_price_taxe_u_night_no_wd_hight_saison,
+                    addtionnal_price_taxe_u_night_wd_hight_saison: addtionnal_price_taxe_u_night_wd_hight_saison,                
+                    
+                    // prix Groupe TTC
+                    price_night_off_ttc: price_night_off_ttc,
+                    price_night_no_wd_low_saison_ttc: price_night_no_wd_low_saison_ttc,
+                    price_night_wd_low_saison_ttc: price_night_wd_low_saison_ttc,
+                    price_night_no_wd_middle_saison_ttc: price_night_no_wd_middle_saison_ttc,
+                    price_night_wd_middle_saison_ttc: price_night_wd_middle_saison_ttc,
+                    price_night_no_wd_middle_saison_ttc: price_night_no_wd_middle_saison_ttc,
+                    price_night_wd_hight_saison_ttc: price_night_wd_hight_saison_ttc,
+                    price_taxe_by_night_by_adult_ttc: price_taxe_by_night_by_adult,
+    
+                    // prix Groupe HT
+                    price_night_off_ht: price_night_off_ht,
+                    price_night_no_wd_low_saison_ht: price_night_no_wd_low_saison_ht,
+                    price_night_wd_low_saison_ht: price_night_wd_low_saison_ht,
+                    price_night_no_wd_middle_saison_ht: price_night_no_wd_middle_saison_ht,
+                    price_night_wd_middle_saison_ht: price_night_wd_middle_saison_ht,
+                    price_night_no_wd_hight_saison_ht: price_night_no_wd_hight_saison_ht,
+                    price_night_wd_hight_saison_ht: price_night_wd_hight_saison_ht,
+    
+                    // coup des taxes groupe
+                    additionnal_price_taxe_night_off: additionnal_price_taxe_night_off,
+                    additionnal_price_night_no_wd_low_saison: additionnal_price_night_no_wd_low_saison,
+                    additionnal_price_night_wd_low_saison: additionnal_price_night_wd_low_saison,
+                    additionnal_price_night_no_wd_middle_saison: additionnal_price_night_no_wd_middle_saison,
+                    additionnal_price_night_wd_middle_saison: additionnal_price_night_wd_middle_saison,
+                    additionnal_price_night_no_wd_hight_saison: additionnal_price_night_no_wd_hight_saison,
+                    additionnal_price_night_wd_hight_saison: additionnal_price_night_wd_hight_saison,
+                    additionnal_price_taxe_by_night_by_adult: additionnal_price_taxe_by_night_by_adult,
+    
+                    additionnal_price_service_taxe_value: 0,
+                    additionnal_price_reservation_taxe_value: 0,
+    
+                    service_taxe_value: 0,
+                    reservation_taxe_value: 0,
+    
+                    priceServiceTaxeValueTTC: 0,
+                    priceLocationTaxeValueHT: 0,
+                    priceLocationTaxeValueTTC: 0,
+    
+                    specialDiscountValue: 0,
+    
+                    totalHTBeforeSpecialDiscount: 0,
+                    totalHTAfterSpecialDiscount: 0,
+                    totalTTCBeforeSpecialDiscount: 0,
+                    totalTTCAfterSpecialDiscount: 0,
+    
+                    totalHT: 0,
+                    total_ttc: 0
+    
+                }]
+                body;
+                req.body = body
+                
+                next();
+                
+                // console.log(ready_for_calculated.price_night_of_celebration * ready_for_calculated.count_night_out_wd_middle_saison)
+                // console.log(body)
+            }).catch((err) => {
+                console.log(err)
+            })
+        })
     } catch (error) {
         return res.status(400).send(new Error('Bad request access get saison !!'));
     }
